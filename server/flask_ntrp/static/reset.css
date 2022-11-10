@@ -1,0 +1,36 @@
+/* ------------------------------------------------------------------------
+    FileName    : reset.css
+    Author      : funlab
+    Revision    : 2017.10.11
+    Modified    : 2017.10.11
+   ------------------------------------------------------------------------ */
+
+   /* @import url('BMHANNAPro.css'); */
+
+   *, :after, :before {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+   body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0; box-sizing:border-box;}
+   fieldset,img {border:0 none;vertical-align:baseline;box-sizing:border-box;}
+   dl,ul,ol,menu,li {list-style:none; box-sizing:border-box;}
+   blockquote, q {quotes:none}
+   blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
+   input,select,textarea,button {font-size:100%;vertical-align:middle}
+   article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
+   button {border:0 none;background-color:transparent;cursor:pointer}
+   table {border-collapse:collapse;border-spacing:0}
+   body {-webkit-text-size-adjust:none;-ms-text-size-adjust:none} /* ë·°í‘œíŠ¸ ë³€í™˜ì‹œ í°íŠ¸í¬ê¸° ìžë™í™•ëŒ€ ë°©ì§€ */
+   input[type='text'],input[type='password'],input[type='submit'],input[type='search'] {-webkit-appearance:none;}
+   input:checked[type='checkbox'] {background-color:#666; -webkit-appearance:checkbox}
+   input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder { /* WebKit browsers */ color:transparent; }
+   input:focus:-moz-placeholder, textarea:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color:transparent; }
+   input:focus::-moz-placeholder, textarea:focus::-moz-placeholder { /* Mozilla Firefox 19+ */ color:transparent; }
+   input:focus:-ms-input-placeholder, textarea:focus:-ms-input-placeholder { /* Internet Explorer 10+ */ color:transparent; }
+   button,input[type='button'],input[type='submit'],input[type='reset'],input[type='file'] {-webkit-appearance:none; border-radius:0}
+   input[type='search']::-webkit-search-cancel-button {-webkit-appearance:none}
+   body,th,td,input,textarea {font-size:14px;line-height:1.5;color:#000} /* colorê°’ì€ ë””ìžì¸ê°€ì´ë“œì— ë§žê²Œì‚¬ìš© */
+   a {color:#000;text-decoration:none;}
+   a:active, a:hover {text-decoration:none}
+   address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
+   sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+   legend {position:absolute; top:0; left:0; width:0; height:0; overflow:hidden; padding:0; visibility:hidden; font-size:0; line-height:0;}
+   
+   

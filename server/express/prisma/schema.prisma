@@ -1,0 +1,52 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider     = "sqlite"
+  url          = env("DATABASE_URL")
+  relationMode = "foreignKeys"
+}
+
+model answer {
+  content   String?
+  q_a_id    Int?
+  score     Float?
+  type_idx  Int?
+  answer_id Int     @id @default(autoincrement())
+  type      String?
+}
+
+model post {
+  id        Int      @id @default(autoincrement())
+  author_id Int
+  created   DateTime @default(now())
+  title     String
+  body      String
+  user      user     @relation(fields: [author_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model question {
+  content     String?
+  type        String?
+  type_idx    Int?
+  score       Float?
+  yn          String?
+  question_id Int     @id @default(autoincrement())
+}
+
+model result {
+  content               String?
+  score                 Float?
+  result_id             Int     @id @default(autoincrement())
+  character_name        String?
+  character_description String?
+}
+
+model user {
+  id       Int    @id @default(autoincrement())
+  username String @unique(map: "sqlite_autoindex_user_1")
+  password String
+  post     post[]
+}

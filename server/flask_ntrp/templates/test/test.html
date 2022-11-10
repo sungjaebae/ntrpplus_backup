@@ -1,0 +1,461 @@
+{% extends 'base.html' %} {% block header %}
+<div class="test-header pt-5 pb-4 text-center">
+  <h1 class="test-header-title">테니스 실력 테스트</h1>
+  <div class="mt-4 test-header-row">
+    <div class="mx-3 px-3 rounded test-header-card">
+      <img
+        src="{{url_for('static', filename='ic_clock.svg')}}"
+        alt="vectoricon"
+        class="img-fluid test-header-icon"
+      />
+      <div class="test-header-content-wrap">
+        <div class="test-header-content">
+          총 검사 시간은 10분 내외로 진행돼요.
+        </div>
+      </div>
+    </div>
+    <div class="mx-3 px-3 rounded test-header-card">
+      <img
+        src="{{url_for('static', filename='ic_vector.svg')}}"
+        alt="vectoricon"
+        class="img-fluid test-header-icon"
+      />
+      <div class="test-header-content-wrap">
+        <div class="test-header-content">
+          각 문항들은 주관적인 부분이 있을 수 있으니 본인이 느끼시는대로
+          답변해주세요.
+        </div>
+      </div>
+    </div>
+    <div class="mx-3 px-3 rounded test-header-card">
+      <img
+        src="{{url_for('static', filename='ic_document.svg')}}"
+        alt="vectoricon"
+        class="img-fluid test-header-icon"
+      />
+      <div class="test-header-content-wrap">
+        <div class="test-header-content">
+          테스트는 테니스 실력 평가 기준인 NTRP를 기준으로 작성되었어요.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block content %}
+<article id="test">
+  <div id="progress" class="sticky-top pt-5 pb-1">
+    <div class="mt-5 d-flex justify-content-center align-items-center">
+      <div
+        class="test-progress-circle-active d-flex justify-content-center align-items-center"
+        id="test-progress-circle-forehand"
+      >
+        <div
+          class="sized-box test-progress-circle-content-active d-flex justify-content-center align-items-center fs-3"
+          id="test-progress-content-forehand"
+        >
+          1
+        </div>
+      </div>
+      <div
+        class="test-progress-line-inactive"
+        id="test-progress-line-forehand"
+      ></div>
+      <div
+        class="test-progress-circle-inactive d-flex justify-content-center align-items-center"
+        id="test-progress-circle-backhand"
+      >
+        <div
+          class="sized-box test-progress-circle-content-inactive d-flex justify-content-center align-items-center fs-3"
+          id="test-progress-content-backhand"
+        >
+          2
+        </div>
+      </div>
+      <div
+        class="test-progress-line-inactive"
+        id="test-progress-line-backhand"
+      ></div>
+      <div
+        class="test-progress-circle-inactive d-flex justify-content-center align-items-center"
+        id="test-progress-circle-servenreturn"
+      >
+        <div
+          class="sized-box test-progress-circle-content-inactive d-flex justify-content-center align-items-center fs-3"
+          id="test-progress-content-servenreturn"
+        >
+          3
+        </div>
+      </div>
+      <div
+        class="test-progress-line-inactive"
+        id="test-progress-line-servenreturn"
+      ></div>
+      <div
+        class="test-progress-circle-inactive d-flex justify-content-center align-items-center"
+        id="test-progress-circle-volley"
+      >
+        <div
+          class="sized-box test-progress-circle-content-inactive d-flex justify-content-center align-items-center fs-3"
+          id="test-progress-content-volley"
+        >
+          4
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 d-flex justify-content-center align-items-center">
+      <div
+        class="test-progress-under-text-active"
+        id="test-progress-under-text-forehand"
+      >
+        포핸드<br />스트로크
+      </div>
+      <div class="test-progress-under-text-margin"></div>
+      <div
+        class="test-progress-under-text-inactive"
+        id="test-progress-under-text-backhand"
+      >
+        백핸드<br />스트로크
+      </div>
+      <div class="test-progress-under-text-margin"></div>
+      <div
+        class="test-progress-under-text-inactive"
+        id="test-progress-under-text-servenreturn"
+      >
+        서브 & 리턴
+      </div>
+      <div class="test-progress-under-text-margin"></div>
+      <div
+        class="test-progress-under-text-inactive"
+        id="test-progress-under-text-volley"
+      >
+        발리
+      </div>
+    </div>
+  </div>
+  <form action="/result" method="post" name="testForm">
+    <div id="profile">
+      <div class="p-4 question_wrap" id="gender">
+        <div class="text-center mt-3">
+          <h3>
+            <span class="question_content">당신의 성별은 어떻게 되나요?</span>
+          </h3>
+        </div>
+        <div class="mt-5 mb-3 radio-wrap-row">
+          <input type="radio" id="radio_gender_m" name="gender" value="M" />
+          <label for="radio_gender_m" class="radio-small">남자</label>
+          <input type="radio" id="radio_gender_f" name="gender" value="F" />
+          <label for="radio_gender_f" class="radio-small">여자</label>
+        </div>
+      </div>
+      <hr />
+      <div class="p-4 question_wrap" id="age">
+        <div class="text-center mt-3">
+          <h3>
+            <span class="question_content">당신의 나이는 어떻게 되나요?</span>
+          </h3>
+        </div>
+        <div class="mt-5 mb-3 text-center radio-row input-profile-row">
+          <input
+            class="form-control input-profile"
+            name="age"
+            placeholder="24"
+            aria-label="input field of age"
+          />
+          <span>세</span>
+        </div>
+      </div>
+      <hr />
+      <div class="p-4 question_wrap" id="career">
+        <div class="text-center mt-3">
+          <h3>
+            <span class="question_content">테니스를 몇 년정도 쳤나요?</span>
+          </h3>
+        </div>
+        <div class="mt-5 text-center radio-row input-profile-row">
+          <input
+            class="form-control input-profile"
+            name="career_year"
+            placeholder="10"
+            aria-label="input field of career year"
+          />
+          <span>년</span>
+          <input
+            class="form-control input-profile"
+            name="career_month"
+            placeholder="6"
+            aria-label="input field of career month"
+          />
+          <span>개월</span>
+          <div class="input-profile-example">
+            예시) 0년 7개월<br />
+            3년 3개월
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="d-flex justify-content-center mt-5 mb-5">
+        <button type="button" class="btn-custom" onclick="testStart();">
+          다음 <i class="fa-solid fa-arrow-right color-white"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="forehand">
+      {% for idx in range(1, forehands|length + 1) %}
+      <div class="p-4 question_wrap" id="question_forehand_{{idx}}">
+        <div class="text-center mt-5 question-content-wrap">
+          <h3>
+            <span class="question_number">Q{{idx}} </span
+            ><span class="question_content"
+              >{{forehands[idx]['question']}}</span
+            >
+          </h3>
+        </div>
+        <div class="radio-wrap mt-5">
+          {% for answer in forehands[idx]['answer'] %} {% if
+          forehands[idx]['duplicate'] == 'Y' %}
+          <input
+            type="checkbox"
+            id="forehand_{{idx}}_{{answer['id']}}"
+            name="forehand_{{idx}}"
+            value="{{answer['id']}}"
+          />
+          {% else %}
+          <input
+            type="radio"
+            id="forehand_{{idx}}_{{answer['id']}}"
+            name="forehand_{{idx}}"
+            value="{{answer['id']}}"
+          />
+          {% endif %}
+          <label
+            for="forehand_{{idx}}_{{answer['id']}}"
+            onclick="moveToNextQuestion(`{{forehands[idx]['duplicate']}}`);"
+            >{{answer['answer']}}</label
+          >
+          {% endfor %}
+        </div>
+      </div>
+      <hr />
+      {% endfor %}
+      <div class="d-flex justify-content-center mt-5 mb-5">
+        <button type="button" class="btn-custom" onclick="next();">
+          다음 <i class="fa-solid fa-arrow-right color-white"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="backhand">
+      {% for idx in range(1, backhands|length + 1) %}
+      <div class="p-4 question_wrap" id="question_backhand_{{idx}}">
+        <div class="text-center mt-5">
+          <h3>
+            <span class="question_number">Q{{idx}} </span
+            ><span class="question_content"
+              >{{backhands[idx]['question']}}</span
+            >
+          </h3>
+        </div>
+        <div class="radio-wrap mt-5">
+          {% for answer in backhands[idx]['answer'] %} {% if
+          backhands[idx]['duplicate'] == 'Y' %}
+          <input
+            type="checkbox"
+            id="backhand_{{idx}}_{{answer['id']}}"
+            name="backhand_{{idx}}"
+            value="{{answer['id']}}"
+          />
+          {% else %}
+          <input
+            type="radio"
+            id="backhand_{{idx}}_{{answer['id']}}"
+            name="backhand_{{idx}}"
+            value="{{answer['id']}}"
+          />
+          {% endif %}
+          <label
+            for="backhand_{{idx}}_{{answer['id']}}"
+            onclick="moveToNextQuestion(`{{backhands[idx]['duplicate']}}`);"
+            >{{answer['answer']}}</label
+          >
+          {% endfor %}
+        </div>
+      </div>
+      <hr />
+      {% endfor %}
+      <div class="d-flex justify-content-center mt-5 mb-5">
+        <button type="button" class="btn-custom" onclick="next();">
+          다음 <i class="fa-solid fa-arrow-right color-white"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="servenreturn">
+      {% for idx in range(1, servenreturns|length + 1) %}
+      <div class="p-4 question_wrap" id="question_servenreturn_{{idx}}">
+        <div class="text-center mt-5">
+          <h3>
+            <span class="question_number">Q{{idx}} </span
+            ><span class="question_content"
+              >{{servenreturns[idx]['question']}}</span
+            >
+          </h3>
+        </div>
+        <div class="radio-wrap mt-5">
+          {% for answer in servenreturns[idx]['answer'] %} {% if
+          servenreturns[idx]['duplicate'] == 'Y' %}
+          <input
+            type="checkbox"
+            id="servenreturn_{{idx}}_{{answer['id']}}"
+            name="servenreturn_{{idx}}"
+            value="{{answer['id']}}"
+          />
+          {% else %}
+          <input
+            type="radio"
+            id="servenreturn_{{idx}}_{{answer['id']}}"
+            name="servenreturn_{{idx}}"
+            value="{{answer['id']}}"
+          />
+          {% endif %}
+          <label
+            for="servenreturn_{{idx}}_{{answer['id']}}"
+            onclick="moveToNextQuestion(`{{servenreturns[idx]['duplicate']}}`);"
+            >{{answer['answer']}}</label
+          >
+          {% endfor %}
+        </div>
+      </div>
+      <hr />
+      {% endfor %}
+      <div class="d-flex justify-content-center mt-5 mb-5">
+        <button type="button" class="btn-custom" onclick="next();">
+          다음 <i class="fa-solid fa-arrow-right color-white"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="volley">
+      {% for idx in range(1, volleys|length + 1) %}
+      <div class="p-4 question_wrap" id="question_volley_{{idx}}">
+        <div class="text-center mt-5">
+          <h3>
+            <span class="question_number">Q{{idx}} </span
+            ><span class="question_content">{{volleys[idx]['question']}}</span>
+          </h3>
+        </div>
+        <div class="radio-wrap mt-5">
+          {% for answer in volleys[idx]['answer'] %} {% if
+          volleys[idx]['duplicate'] == 'Y' %}
+          <input
+            type="checkbox"
+            id="volley_{{idx}}_{{answer['id']}}"
+            name="volley_{{idx}}"
+            value="{{answer['id']}}"
+          />
+          {% else %}
+          <input
+            type="radio"
+            id="volley_{{idx}}_{{answer['id']}}"
+            name="volley_{{idx}}"
+            value="{{answer['id']}}"
+          />
+          {% endif %}
+          <label
+            for="volley_{{idx}}_{{answer['id']}}"
+            onclick="moveToNextQuestion(`{{volleys[idx]['duplicate']}}`);"
+            >{{answer['answer']}}</label
+          >
+          {% endfor %}
+        </div>
+      </div>
+      <hr />
+      {% endfor %}
+      <div class="d-flex justify-content-center mt-5 mb-5">
+        <button type="button" class="btn-custom" onclick="next();">
+          다음 <i class="fa-solid fa-arrow-right color-white"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="id_input">
+      <p class="id-input-description mt-5">
+        전화번호를 입력하면 다시 검사하는 번거로움 없이 검사 결과를 불러올 수
+        있어요!
+      </p>
+
+      <div class="id-input-title">
+        휴대폰 번호<span class="id-input-description">(선택)</span>
+      </div>
+      <p class="id-input-description">
+        입력을 원하지 않을 시 입력 없이 아래 "결과화면 보러가기" 버튼을
+        눌러주세요.
+      </p>
+      <input
+        class="id-input mb-5"
+        type="tel"
+        name="mobile"
+        id="mobile"
+        placeholder="01012341234"
+      />
+      <div class="d-flex justify-content-center mt-5 mb-5">
+        <button class="btn-custom px-4" type="button" onclick="showResult();">
+          결과화면 보러가기
+        </button>
+      </div>
+    </div>
+  </form>
+</article>
+<article id="loading">
+  <div class="loading-wrap">
+    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <div class="loading-text" id="loading-text">나의 NTRP+ 점수 계산 중</div>
+    <div class="loading-logo">NTRP <span class="loading-span">plus</span></div>
+  </div>
+</article>
+<article id="forehandloading">
+  <div class="loading-wrap">
+    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <div class="test-loading-text">
+      다음은 포핸드 스트로크에 대한 질문이에요.
+    </div>
+    <button type="button" class="btn-custom mt-5" onclick="next();">
+      다음 <i class="fa-solid fa-arrow-right color-white"></i>
+    </button>
+    <div class="loading-logo">NTRP <span class="loading-span">plus</span></div>
+  </div>
+</article>
+<article id="backhandloading">
+  <div class="loading-wrap">
+    <div class="test-loading-text">
+      다음은 백핸드 스트로크에 대한 질문이에요.
+    </div>
+    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <div class="loading-logo">NTRP <span class="loading-span">plus</span></div>
+    <button type="button" class="btn-custom mt-5" onclick="next();">
+      다음 <i class="fa-solid fa-arrow-right color-white"></i>
+    </button>
+  </div>
+</article>
+<article id="servenreturnloading">
+  <div class="loading-wrap">
+    <div class="test-loading-text">다음은 서브&리턴에 대한 질문이에요.</div>
+    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <div class="loading-logo">NTRP <span class="loading-span">plus</span></div>
+    <button type="button" class="btn-custom mt-5" onclick="next();">
+      다음 <i class="fa-solid fa-arrow-right color-white"></i>
+    </button>
+  </div>
+</article>
+<article id="volleyloading">
+  <div class="loading-wrap">
+    <div class="test-loading-text">다음은 발리에 대한 질문이에요.</div>
+    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <div class="loading-logo">NTRP <span class="loading-span">plus</span></div>
+    <button type="button" class="btn-custom mt-5" onclick="next();">
+      다음 <i class="fa-solid fa-arrow-right color-white"></i>
+    </button>
+  </div>
+</article>
+{% endblock %}

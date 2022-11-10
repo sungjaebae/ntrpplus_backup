@@ -1,0 +1,64 @@
+version: "3.4"
+
+services:
+  nginx:
+    container_name: nginx
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    volumes:
+      - "./nginx/default.conf:/etc/nginx/conf.d/default.conf"
+      - "./nginx/templates:/etc/nginx/templates"
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - NGINX_HOST=ntrp.ml
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  certbot:
+    container_name: certbot
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+
+  express:
+    container_name: express
+    build:
+      context: express
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=file:/instance/ntrpplus_flask.sqlite
+    ports:
+      - "4000:4000"
+      - "9229:9229"
+    volumes:
+      - ./express:/app
+      - ./instance:/instance
+      - /app/node_modules
+    command: sh -c './wait-for.sh nginx:80 -- npm run start'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  flask:
+    container_name: flask
+    build:
+      context: flask_ntrp
+      dockerfile: Dockerfile
+    environment:
+      - FLASK_APP=__init__.py
+      - FLASK_DEBUG=true
+    ports:
+      - 5000:80
+    volumes:
+      - ./flask_ntrp:/usr/src/app/
+      - ./instance:/usr/src/instance/
+    command: sh -c './wait-for.sh naver.com:80 -- sh -c "cd .. && python ./app/main.py"'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
