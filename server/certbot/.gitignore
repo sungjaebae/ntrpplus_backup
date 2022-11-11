@@ -1,1 +1,5 @@
 /conf/live/
+/conf/archive/
+/conf/renewal/
+/conf/csr/
+/conf/keys
