@@ -11,21 +11,21 @@ datasource db {
 
 model answer {
   content   String?
-  q_a_id    Int?
+  q_a_id    Int? //보기의 순서. 1,2,3,4까지 있음
   score     Float?
-  type_idx  Int?
+  type_idx  Int? //타입내 순서. 1~7, 혹은 8까지 있음
   answer_id Int     @id @default(autoincrement())
-  type      String?
+  type      String? //4가지 타입
 }
 
-model post {
-  id        Int      @id @default(autoincrement())
-  author_id Int
-  created   DateTime @default(now())
-  title     String
-  body      String
-  user      user     @relation(fields: [author_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
+// model post {
+//   id        Int      @id @default(autoincrement())
+//   author_id Int
+//   created   DateTime @default(now())
+//   title     String
+//   body      String
+//   user      user     @relation(fields: [author_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+// }
 
 model question {
   content     String?
@@ -45,8 +45,28 @@ model result {
 }
 
 model user {
-  id       Int    @id @default(autoincrement())
-  username String @unique(map: "sqlite_autoindex_user_1")
-  password String
-  post     post[]
+  id            String       @id @default(uuid())
+  gender        String?
+  age           Int?
+  tennisHistory Int?
+  nickname      String       @default("NTRPPlus 사용자")
+  phoneNumber   String?
+  playerResults testResult[] @relation("player")
+  panelResults  testResult[] @relation("panel")
+}
+
+model testResult {
+  id                  String   @id @default(uuid())
+  player              user     @relation(name: "player", fields: [playerId], references: [id])
+  playerId            String
+  panel               user     @relation(name: "panel", fields: [panelId], references: [id])
+  panelId             String
+  answers             String? //걍 JSON으로 저장할꺼
+  version             Int?
+  forehandScore       Float?
+  backhandScore       Float?
+  serveAndReturnScore Float?
+  volleyScore         Float?
+  testStartTime       DateTime @default(now())
+  testEndTime         DateTime @updatedAt
 }
