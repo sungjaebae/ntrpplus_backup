@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { PrismaClient } from '@prisma/client'
+import type { ErrorRequestHandler } from 'express'
 
 const prisma = new PrismaClient()
 const ntrpRouter = Router()
@@ -7,41 +8,180 @@ const ntrpRouter = Router()
 ntrpRouter.get('/', (req, res) => {
   return res.json({ hello: 'ntrp router' })
 })
-
-ntrpRouter.get('/:testId', (req, res, next) => {
-  const { testId } = req.params
-  return res.json({ 구현할응답: `검사결과 ${testId} 의 세부사항을 반환함` })
+//플레이어 생성
+ntrpRouter.post('/player', async (req, res, next) => {
+  try {
+    const { age, gender, tennisHistory, phoneNumber } = req.body
+    const user = await prisma.user.create({
+      data: { age, gender, tennisHistory, phoneNumber },
+    })
+    //console.log('create player ', user)
+    return res.json(user)
+  } catch (err) {
+    next(err)
+  }
 })
 
-ntrpRouter.get('/player/:playerId', (req, res, next) => {
-  const { playerId } = req.params
-  return res.json({ 구현할응답: `플레이어 ${playerId}의 모든 검사결과를 반환함` })
+//플레이어 업데이트
+ntrpRouter.put('/player/:playerId', async (req, res, next) => {
+  try {
+    const { playerId } = req.params
+    const { age, gender, tennisHistory, phoneNumber } = req.body
+    const user = await prisma.user.update({
+      where: {
+        id: playerId,
+      },
+      data: { age, gender, tennisHistory, phoneNumber },
+    })
+    //console.log('updated player ', user)
+    return res.json(user)
+  } catch (err) {
+    next(err)
+  }
 })
 
-ntrpRouter.get('/panel/:panelId', (req, res, next) => {
-  const { panelId } = req.params
-  return res.json({ 구현할응답: `측정자 ${panelId}가 수행한 모든 검사결과를 반환함` })
+//플레이어 전화번호로 조회
+ntrpRouter.get('/player/:phoneNumber', async (req, res, next) => {
+  try {
+    const { phoneNumber } = req.params
+    const user = await prisma.user.findFirst({
+      where: { phoneNumber },
+    })
+    //console.log('player by phoneNumber ', user)
+    return res.json(user)
+  } catch (err) {
+    next(err)
+  }
 })
 
-ntrpRouter.get('/:panelId/:playerId', (req, res, next) => {
-  const { panelId, playerId } = req.params
-  return res.json({
-    구현할응답: ` 측정자 ${panelId}가 수행한 유저 ${playerId}의 모든 검사 결과들을 반환함`,
-  })
+//패널 생성, 사실상 플레이어생성과 동일함
+ntrpRouter.post('/panel', async (req, res, next) => {
+  try {
+    const user = await prisma.user.create({
+      data: {},
+    })
+    //console.log('create panel ', user)
+    return res.json(user)
+  } catch (err) {
+    next(err)
+  }
 })
 
-ntrpRouter.post('/', (req, res, next) => {
-  return res.json({
-    구현할요청: `전화번호, 상대방 전화번호, 질문에 대한 답변, 검사지 버전, 각 부문별 점수, 검사 시작시간, 검사 종료시간`,
-    구현할응답: `응답 코드만 던짐`,
-  })
+//테스트 생성
+ntrpRouter.post('/test', async (req, res, next) => {
+  try {
+    const { playerId, panelId } = req.body
+    const testResult = await prisma.testResult.create({
+      data: { playerId, panelId },
+    })
+    //console.log('create test', testResult)
+    return res.json(testResult)
+  } catch (err) {
+    next(err)
+  }
 })
 
-ntrpRouter.post('/:test', (req, res, next) => {
-  return res.json({
-    구현할요청: `전화번호`,
-    구현할응답: `응답 코드만 던짐`,
-  })
+//테스트 업데이트
+ntrpRouter.put('/test/:testId', async (req, res, next) => {
+  try {
+    const { testId } = req.params
+    const { answers, version, forehandScore, backhandScore, serveAndReturnScore, volleyScore } =
+      req.body
+    const testResult = await prisma.testResult.update({
+      where: { id: testId },
+      data: {
+        answers,
+        version,
+        forehandScore,
+        backhandScore,
+        serveAndReturnScore,
+        volleyScore,
+      },
+    })
+    //console.log('update test', testResult)
+    return res.json(testResult)
+  } catch (err) {
+    next(err)
+  }
 })
+
+//플레이어의 모든 테스트 결과 조회
+ntrpRouter.get('/test/player/:playerId', async (req, res, next) => {
+  try {
+    const { playerId } = req.params
+    const testResult = await prisma.testResult.findMany({
+      where: { playerId },
+    })
+    //console.log("get player's tests", testResult)
+    return res.json(testResult)
+  } catch (err) {
+    next(err)
+  }
+})
+
+//패널의 모든 테스트 결과 조회
+ntrpRouter.get('/test/panel/:panelId', async (req, res, next) => {
+  try {
+    const { panelId } = req.params
+    const testResult = await prisma.testResult.findMany({
+      where: { panelId },
+    })
+    //console.log("get panel's tests", testResult)
+    return res.json(testResult)
+  } catch (err) {
+    next(err)
+  }
+})
+
+//플레이어 패널 페어의 모든 테스트 결과 조회
+ntrpRouter.get('/test/:panelId/:playerId', async (req, res, next) => {
+  try {
+    const { panelId, playerId } = req.params
+    const testResult = await prisma.testResult.findMany({
+      where: { panelId, playerId },
+    })
+    //console.log("get panel and player pair's tests", testResult)
+    return res.json(testResult)
+  } catch (err) {
+    next(err)
+  }
+})
+
+//테스트 검사결과 조회
+ntrpRouter.get('/test/:testId', async (req, res, next) => {
+  try {
+    const { testId } = req.params
+    const testResult = await prisma.testResult.findMany({
+      where: { id: testId },
+    })
+    //console.log('get a test result ', testResult)
+    return res.json(testResult)
+  } catch (err) {
+    next(err)
+  }
+})
+
+function jsonFriendlyErrorReplacer(key: any, value: any) {
+  if (value instanceof Error) {
+    return {
+      // Pull all enumerable properties, supporting properties on custom Errors
+      ...value,
+      // Explicitly pull Error's non-enumerable properties
+      name: value.name,
+      message: value.message,
+      stack: value.stack,
+    }
+  }
+
+  return value
+}
+
+const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  console.log(err)
+  res.status(401)
+  res.json({ error: err.message })
+}
+
+ntrpRouter.use(errorHandler)
 
 export default ntrpRouter

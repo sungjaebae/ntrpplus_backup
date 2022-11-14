@@ -29,6 +29,7 @@ services:
 
   express:
     container_name: express
+    user: root
     build:
       context: express
       dockerfile: Dockerfile.dev
@@ -42,7 +43,7 @@ services:
       - ./express:/app
       - ./instance:/instance
       - /app/node_modules
-    command: sh -c './wait-for.sh nginx:80 -- npm run start'
+    command: sh -c './wait-for.sh nginx:80 -- sh -c "npx prisma db push --accept-data-loss && npx prisma db seed && npm run start"'
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
