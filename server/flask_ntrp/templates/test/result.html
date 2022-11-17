@@ -219,7 +219,7 @@
     <div class="result-content-share-button-wrap">
       <div class="result-content-share-button btn-copy" id="imgCopyBtn">
         <img
-          src="/static/ic_download.svg"
+          src="{{ url_for('static', filename='ic_download.svg')}}"
           alt="clipboard copy icon"
           class="btn-copy-icon"
         />
@@ -238,7 +238,7 @@
     </div>
   </div>
   <div class="result-final-wrap">
-    <a href="{{url_for('test.index')}}" class="result-final-btn-return"
+    <a href="{{url_for('test')}}" class="result-final-btn-return"
       >테스트 다시하기</a
     >
     <div class="result-final-btn-copy" id="secondImgCopyBtn">
@@ -280,10 +280,17 @@
     },
     buttons: [
       {
+        title: "친구 측정하기",
+        link: {
+          mobileWebUrl: `${config.url}/ntrp//test/{{playerId}}`,
+          webUrl: `${config.url}/ntrp//test/{{playerId}}`,
+        },
+      },
+      {
         title: "결과 보러 가기",
         link: {
-          mobileWebUrl: "https://developers.kakao.com",
-          webUrl: "https://developers.kakao.com",
+          mobileWebUrl: `${config.url}/ntrp/result/{{testId}}`,
+          webUrl: `${config.url}/ntrp/result/{{testId}}`,
         },
       },
     ],
@@ -291,8 +298,9 @@
 </script>
 <script>
   const urlShareBtn = document.getElementById("urlShareBtn");
+  const resultUrl = `${config.url}/ntrp/result/{{testId}}`;
   urlShareBtn.onclick = () => {
-    window.navigator.clipboard.writeText(window.location.href).then(() => {
+    window.navigator.clipboard.writeText(resultUrl).then(() => {
       toast("복사완료");
     });
   };
@@ -314,7 +322,7 @@
     toast.classList.add("reveal"), (toast.innerText = string);
   }
 </script>
-<script src="/static/html2canvas.min.js"></script>
+<script src="{{ url_for('static', filename='html2canvas.min.js')}}"></script>
 <script>
   async function saveAs(uri, filename) {
     var link = document.createElement("a");

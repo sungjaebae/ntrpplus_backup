@@ -500,7 +500,7 @@ input[type="radio"]:checked + label {
 
 .radio-small {
   margin-right: 20px;
-  width: 15% !important;
+  /* width: 20% !important; */
   padding: 0.75em 4vw !important;
   box-sizing: border-box;
   position: relative;
@@ -622,7 +622,7 @@ input[type="checkbox"]:checked + label {
 
 .result-card {
   width: 40vw;
-  height: 50vw;
+  height: 55vw;
   background: #f6f6f6;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.14);
   border-radius: 50px;

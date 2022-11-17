@@ -11,9 +11,9 @@ ntrpRouter.get('/', (req, res) => {
 //플레이어 생성
 ntrpRouter.post('/player', async (req, res, next) => {
   try {
-    const { age, gender, tennisHistory, phoneNumber } = req.body
+    const { age, gender, tennisHistory, phoneNumber, nickname } = req.body
     const user = await prisma.user.create({
-      data: { age, gender, tennisHistory, phoneNumber },
+      data: { age, gender, tennisHistory, phoneNumber, nickname },
     })
     //console.log('create player ', user)
     return res.json(user)

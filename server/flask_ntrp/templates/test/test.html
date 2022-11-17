@@ -133,7 +133,10 @@
       </div>
     </div>
   </div>
-  <form action="/result" method="post" name="testForm">
+  <form action="/ntrp/result" method="post" name="testForm">
+    {% if isPanel %}
+    <input type="hidden" name="playerId" value="{{playerId}}" />
+    {% endif %}
     <div id="profile">
       <div class="p-4 question_wrap" id="gender">
         <div class="text-center mt-3">
@@ -142,9 +145,14 @@
           </h3>
         </div>
         <div class="mt-5 mb-3 radio-wrap-row">
-          <input type="radio" id="radio_gender_m" name="gender" value="M" />
+          <input type="radio" id="radio_gender_m" name="gender" value="male" />
           <label for="radio_gender_m" class="radio-small">남자</label>
-          <input type="radio" id="radio_gender_f" name="gender" value="F" />
+          <input
+            type="radio"
+            id="radio_gender_f"
+            name="gender"
+            value="female"
+          />
           <label for="radio_gender_f" class="radio-small">여자</label>
         </div>
       </div>
@@ -409,14 +417,22 @@
 </article>
 <article id="loading">
   <div class="loading-wrap">
-    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <img
+      src="{{url_for('static', filename='result_1.png')}}"
+      alt="loading image"
+      class="loading-image"
+    />
     <div class="loading-text" id="loading-text">나의 NTRP+ 점수 계산 중</div>
     <div class="loading-logo">NTRP <span class="loading-span">plus</span></div>
   </div>
 </article>
 <article id="forehandloading">
   <div class="loading-wrap">
-    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <img
+      src="{{url_for('static', filename='result_1.png')}}"
+      alt="loading image"
+      class="loading-image"
+    />
     <div class="test-loading-text">
       다음은 포핸드 스트로크에 대한 질문이에요.
     </div>
@@ -431,7 +447,11 @@
     <div class="test-loading-text">
       다음은 백핸드 스트로크에 대한 질문이에요.
     </div>
-    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <img
+      src="{{url_for('static', filename='result_1.png')}}"
+      alt="loading image"
+      class="loading-image"
+    />
     <div class="loading-logo">NTRP <span class="loading-span">plus</span></div>
     <button type="button" class="btn-custom mt-5" onclick="next();">
       다음 <i class="fa-solid fa-arrow-right color-white"></i>
@@ -441,7 +461,11 @@
 <article id="servenreturnloading">
   <div class="loading-wrap">
     <div class="test-loading-text">다음은 서브&리턴에 대한 질문이에요.</div>
-    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <img
+      src="{{url_for('static', filename='result_1.png')}}"
+      alt="loading image"
+      class="loading-image"
+    />
     <div class="loading-logo">NTRP <span class="loading-span">plus</span></div>
     <button type="button" class="btn-custom mt-5" onclick="next();">
       다음 <i class="fa-solid fa-arrow-right color-white"></i>
@@ -451,7 +475,11 @@
 <article id="volleyloading">
   <div class="loading-wrap">
     <div class="test-loading-text">다음은 발리에 대한 질문이에요.</div>
-    <img src="{{url_for('static', filename='result_1.png')}}" alt="loading image" class="loading-image" />
+    <img
+      src="{{url_for('static', filename='result_1.png')}}"
+      alt="loading image"
+      class="loading-image"
+    />
     <div class="loading-logo">NTRP <span class="loading-span">plus</span></div>
     <button type="button" class="btn-custom mt-5" onclick="next();">
       다음 <i class="fa-solid fa-arrow-right color-white"></i>
