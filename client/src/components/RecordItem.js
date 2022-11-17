@@ -6,19 +6,29 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const RecordItem = ({ uuid, ntrp, time, target, estimator }) => {
-  const isMine = target === estimator;
+const RecordItem = (props) => {
+  const item = props.item;
+  const isMine = item.panelId === item.playerId;
+  const ntrp =
+    Math.round(
+      ((item.forehandScore +
+        item.backhandScore +
+        item.serveAndReturnScore +
+        item.volleyScore) /
+        4) *
+        100
+    ) / 100;
   return (
-    <div>
+    <a href={"/ntrp/result/" + item.id}>
       <div className="flex justify-between">
         <div className="font-bold text-next text-lg">
-          {convertTimeToStr(time)}
+          {convertTimeToStr(item.testEndTime)}
         </div>
         {isMine ? (
           <div></div>
         ) : (
           <div className="text-secondary-400 font-bold">
-            {estimator} 님이 측정
+            {item.panelId} 님이 측정
           </div>
         )}
       </div>
@@ -26,7 +36,9 @@ const RecordItem = ({ uuid, ntrp, time, target, estimator }) => {
       <div
         className={
           "border-2 rounded-md flex items-stretch w-full px-3 md:px-6 py-3 mt-2 mb-8" +
-          (isMine ? " border-primary-400 hover:border-primary-600 hover:cursor-pointer" : " border-secondary-400 hover:border-secondary-600 hover:cursor-pointer")
+          (isMine
+            ? " border-primary-400 hover:border-primary-600 hover:cursor-pointer"
+            : " border-secondary-400 hover:border-secondary-600 hover:cursor-pointer")
         }
       >
         <img
@@ -49,7 +61,7 @@ const RecordItem = ({ uuid, ntrp, time, target, estimator }) => {
           />
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 

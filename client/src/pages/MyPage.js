@@ -9,18 +9,14 @@ const MyPage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const setUserId = useUserStore((state) => state.setUserId);
   const handleClickShowRecordsBtn = async () => {
-    const response = await axios.post(
-      "/api/users",
-      { phoneNumber: phoneNumber }
-      // {
-      //   headers: {
-      //     "Content-type": "application/json",
-      //     Accept: "application/json",
-      //   },
-      // }
-    );
-    await setUserId(response.data.uid);
-    navigate("/mypage/record");
+    const response = await axios.get(`/api/ntrp/player/${phoneNumber}`);
+    console.log(response);
+    if (response.data == null) {
+      alert("실력 측정한 기록이 없습니다!");
+    } else {
+      await setUserId(response.data.id);
+      navigate("/mypage/record");
+    }
   };
 
   return (

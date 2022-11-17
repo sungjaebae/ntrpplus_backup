@@ -1,23 +1,24 @@
 import tedor from "../tedor.svg";
-import useUserStore from "../data/User";
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TestLink = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const handleClickGetTestLinkBtn = async (param) => {
-    const response = await axios.post(
-      "/api/testLink",
-      { phoneNumber: phoneNumber }
-      // {
-      //   headers: {
-      //     "Content-type": "application/json",
-      //     Accept: "application/json",
-      //   },
-      // }
-    );
-    window.navigator.clipboard.writeText(response.data.link).then(() => {
+    const response = await axios.get(`/api/ntrp/player/${phoneNumber}`);
+    let userId = "";
+    let url = "";
+    if (response.data == null) {
+      const postUserResponse = await axios.post("/api/ntrp/player", {
+        phoneNumber: phoneNumber,
+      });
+      userId = postUserResponse.data.id;
+    } else {
+      userId = response.data.id;
+    }
+    url = `${process.env.REACT_APP_TEST_URL}/${userId}`;
+    window.navigator.clipboard.writeText(url).then(() => {
       showToast();
     });
   };

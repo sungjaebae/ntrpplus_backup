@@ -10,17 +10,9 @@ const RecordList = () => {
   const [nickname, setNickname] = useState("");
   const [records, setRecords] = useState([]);
   const getRecords = async () => {
-    const response = await axios.get(
-      `/api/ntrp/player/${userId}`
-      // {
-      //   headers: {
-      //     "Content-type": "application/json",
-      //     Accept: "application/json",
-      //   },
-      // }
-    );
-    setNickname(response.data.nickname);
-    setRecords(response.data.records);
+    const response = await axios.get(`/api/ntrp/test/player/${userId}`);
+    // setNickname(response.data.nickname);
+    setRecords(response.data);
   };
 
   useEffect(() => {
@@ -35,7 +27,7 @@ const RecordList = () => {
         </div>
         <div className="w-full">
           {records.map((it) => (
-            <RecordItem key={`recorditem_${it.uuid}`} {...it} />
+            <RecordItem key={`recorditem_${it.id}`} item={it} />
           ))}
         </div>
         <Link
