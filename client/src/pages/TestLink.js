@@ -1,5 +1,5 @@
 import tedor from "../tedor.svg";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -39,7 +39,7 @@ const TestLink = () => {
   };
 
   const testLinkUrl = () => {
-    return new ClipboardItem({
+    return new window.ClipboardItem({
       "text/plain": clipboardFunction(),
     });
   };

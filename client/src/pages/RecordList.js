@@ -5,7 +5,6 @@ import axios from "axios";
 import RecordItem from "../components/RecordItem";
 
 const RecordList = () => {
-  const navigate = useNavigate();
   const userId = useUserStore((state) => state.userId);
   const [nickname, setNickname] = useState("");
   const [records, setRecords] = useState([]);
