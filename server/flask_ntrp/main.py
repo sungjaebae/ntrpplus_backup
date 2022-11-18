@@ -15,7 +15,7 @@ app.config.from_mapping(
 if app.debug:
     URL = 'https://ntrp.ml/api/ntrp'
 else:
-    URL = 'https://ntrpplus.com'
+    URL = 'https://ntrpplus.com/api/ntrp'
 
 
 @app.route('/')
