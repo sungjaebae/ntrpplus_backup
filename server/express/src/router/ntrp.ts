@@ -73,6 +73,10 @@ ntrpRouter.post('/test', async (req, res, next) => {
     const { playerId, panelId } = req.body
     const testResult = await prisma.testResult.create({
       data: { playerId, panelId },
+      include: {
+        player: true,
+        panel: true,
+      },
     })
     //console.log('create test', testResult)
     return res.json(testResult)
@@ -97,6 +101,10 @@ ntrpRouter.put('/test/:testId', async (req, res, next) => {
         serveAndReturnScore,
         volleyScore,
       },
+      include: {
+        player: true,
+        panel: true,
+      },
     })
     //console.log('update test', testResult)
     return res.json(testResult)
@@ -111,6 +119,10 @@ ntrpRouter.get('/test/player/:playerId', async (req, res, next) => {
     const { playerId } = req.params
     const testResult = await prisma.testResult.findMany({
       where: { playerId },
+      include: {
+        player: true,
+        panel: true,
+      },
     })
     //console.log("get player's tests", testResult)
     return res.json(testResult)
@@ -125,6 +137,10 @@ ntrpRouter.get('/test/panel/:panelId', async (req, res, next) => {
     const { panelId } = req.params
     const testResult = await prisma.testResult.findMany({
       where: { panelId },
+      include: {
+        player: true,
+        panel: true,
+      },
     })
     //console.log("get panel's tests", testResult)
     return res.json(testResult)
@@ -139,6 +155,10 @@ ntrpRouter.get('/test/:panelId/:playerId', async (req, res, next) => {
     const { panelId, playerId } = req.params
     const testResult = await prisma.testResult.findMany({
       where: { panelId, playerId },
+      include: {
+        player: true,
+        panel: true,
+      },
     })
     //console.log("get panel and player pair's tests", testResult)
     return res.json(testResult)
@@ -153,6 +173,10 @@ ntrpRouter.get('/test/:testId', async (req, res, next) => {
     const { testId } = req.params
     const testResult = await prisma.testResult.findMany({
       where: { id: testId },
+      include: {
+        player: true,
+        panel: true,
+      },
     })
     //console.log('get a test result ', testResult)
     return res.json(testResult)
