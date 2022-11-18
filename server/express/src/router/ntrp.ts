@@ -12,17 +12,15 @@ ntrpRouter.get('/', (req, res) => {
 ntrpRouter.post('/player', async (req, res, next) => {
   try {
     let { age, gender, tennisHistory, phoneNumber, nickname } = req.body
-    let last4digits;
-    if(phoneNumber)
-    {
-      last4digits = phoneNumber.slice(-4, phoneNumber.length) 
+    let last4digits
+    if (phoneNumber) {
+      last4digits = phoneNumber.slice(-4, phoneNumber.length)
     }
-    if(!nickname&& !last4digits)
-    {
-      nickname=last4digits
+    if (!nickname && !last4digits) {
+      nickname = last4digits
     }
     const user = await prisma.user.create({
-      data: { age, gender, tennisHistory, phoneNumber, nickname},
+      data: { age, gender, tennisHistory, phoneNumber, nickname },
     })
     //console.log('create player ', user)
     return res.json(user)
@@ -132,6 +130,9 @@ ntrpRouter.get('/test/player/:playerId', async (req, res, next) => {
         player: true,
         panel: true,
       },
+      orderBy: {
+        testEndTime: 'desc',
+      },
     })
     //console.log("get player's tests", testResult)
     return res.json(testResult)
@@ -150,6 +151,9 @@ ntrpRouter.get('/test/panel/:panelId', async (req, res, next) => {
         player: true,
         panel: true,
       },
+      orderBy: {
+        testEndTime: 'desc',
+      },
     })
     //console.log("get panel's tests", testResult)
     return res.json(testResult)
@@ -167,6 +171,9 @@ ntrpRouter.get('/test/:panelId/:playerId', async (req, res, next) => {
       include: {
         player: true,
         panel: true,
+      },
+      orderBy: {
+        testEndTime: 'desc',
       },
     })
     //console.log("get panel and player pair's tests", testResult)
