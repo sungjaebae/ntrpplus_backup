@@ -8,7 +8,6 @@ const TestLink = () => {
   let isBtnClicked = false;
   const clipboardFunction = async () => {
     if (isBtnClicked) {
-      console.log("api is called");
       const getPlayerInfoApiResponse = await axios.get(
         `/api/ntrp/player/${phoneNumber === "" ? "x" : phoneNumber}`
       );

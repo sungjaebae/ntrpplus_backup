@@ -12,7 +12,10 @@ app.config.from_mapping(
     SECRET_KEY='dev',
     DATABASE=os.path.join(app.instance_path, 'ntrpplus_flask.sqlite'),
 )
-URL = 'https://ntrp.ml/api/ntrp'
+if app.debug:
+    URL = 'https://ntrp.ml/api/ntrp'
+else:
+    URL = 'https://ntrpplus.com'
 
 
 @app.route('/')

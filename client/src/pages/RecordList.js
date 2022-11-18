@@ -6,11 +6,10 @@ import RecordItem from "../components/RecordItem";
 
 const RecordList = () => {
   const userId = useUserStore((state) => state.userId);
-  const [nickname, setNickname] = useState("");
+  const nickname = useUserStore((state) => state.nickname);
   const [records, setRecords] = useState([]);
   const getRecords = async () => {
     const response = await axios.get(`/api/ntrp/test/player/${userId}`);
-    // setNickname(response.data.nickname);
     setRecords(response.data);
   };
 

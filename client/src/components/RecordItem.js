@@ -28,7 +28,7 @@ const RecordItem = (props) => {
           <div></div>
         ) : (
           <div className="text-secondary-400 font-bold">
-            {item.panelId} 님이 측정
+            {item.panel.nickname} 님이 측정
           </div>
         )}
       </div>
