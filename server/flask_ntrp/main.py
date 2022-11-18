@@ -165,7 +165,10 @@ def result():
                 volley_answers.append(q)
 
         if playerId == '':
-            jsonResponse = requests.get(url=f'{URL}/player/{mobile}').json()
+            if mobile == '':
+                jsonResponse = None
+            else:
+                jsonResponse = requests.get(url=f'{URL}/player/{mobile}').json()
             if jsonResponse:
                 # 핸드폰 번호가 등록되어 있을 경우
                 playerId = jsonResponse['id']
@@ -192,22 +195,28 @@ def result():
 
         # 포핸드 검사 결과 측정
         forehand_steps = {2: 2, 5: 3.5, 6: 4, 7: 4.5}
+        shareBackhand = 0
         for idx in range(len(forehand_answers)):
             for i in forehand_answers[idx][1]:
                 question_key = f'{forehand_answers[idx][0]}_{i}'
-                forehand_result += questions[question_key]
+                forehand_result += round(questions[question_key], 1)
+                if idx == 2:
+                    shareBackhand += questions[question_key]
+            forehand_result = round(forehand_result, 1)
 
             if (idx + 1) in forehand_steps and forehand_steps[idx + 1] > forehand_result:
                 break
             if (idx + 1) in forehand_steps and forehand_steps[idx + 1] < forehand_result:
                 forehand_result = forehand_steps[idx + 1]
-
         # 백핸드 검사 결과 측정
-        backhand_steps = {2: 2, 5: 3.5, 6: 4, 7: 4.5}
+        backhand_steps = {2: 2, 4: 3.5, 5: 4, 6: 4.5}
         for idx in range(len(backhand_answers)):
             for i in backhand_answers[idx][1]:
                 question_key = f'{backhand_answers[idx][0]}_{i}'
-                backhand_result += questions[question_key]
+                backhand_result += round(questions[question_key], 1)
+            if (idx + 1) == 4:
+                backhand_result += shareBackhand
+            backhand_result = round(backhand_result, 1)
 
             if (idx + 1) in backhand_steps and backhand_steps[idx + 1] > backhand_result:
                 break
@@ -219,7 +228,8 @@ def result():
         for idx in range(len(servenreturn_answers)):
             for i in servenreturn_answers[idx][1]:
                 question_key = f'{servenreturn_answers[idx][0]}_{i}'
-                servenreturn_result += questions[question_key]
+                servenreturn_result += round(questions[question_key], 1)
+            servenreturn_result = round(servenreturn_result, 1)
 
             if (idx + 1) in servenreturn_steps and servenreturn_steps[idx + 1] > servenreturn_result:
                 break
@@ -232,7 +242,8 @@ def result():
         for idx in range(len(volley_answers)):
             for i in volley_answers[idx][1]:
                 question_key = f'{volley_answers[idx][0]}_{i}'
-                volley_result += questions[question_key]
+                volley_result += round(questions[question_key], 1)
+            volley_result = round(volley_result, 1)
 
             if (idx + 1) in volley_steps and volley_steps[idx + 1] > volley_result:
                 break

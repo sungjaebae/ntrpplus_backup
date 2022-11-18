@@ -1,24 +1,53 @@
 import tedor from "../tedor.svg";
-import { useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const TestLink = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
-  const handleClickGetTestLinkBtn = async (param) => {
-    const response = await axios.get(`/api/ntrp/player/${phoneNumber}`);
-    let userId = "";
-    let url = "";
-    if (response.data == null) {
-      const postUserResponse = await axios.post("/api/ntrp/player", {
-        phoneNumber: phoneNumber,
-      });
-      userId = postUserResponse.data.id;
+  let isBtnClicked = false;
+  const clipboardFunction = async () => {
+    if (isBtnClicked) {
+      console.log("api is called");
+      const getPlayerInfoApiResponse = await axios.get(
+        `/api/ntrp/player/${phoneNumber === "" ? "x" : phoneNumber}`
+      );
+      if (!getPlayerInfoApiResponse.data) {
+        const createPlayerApiResponse = await axios.post("/api/ntrp/player", {
+          phoneNumber: phoneNumber,
+        });
+        isBtnClicked = false;
+        return new Blob(
+          [
+            `${process.env.REACT_APP_TEST_URL}/${createPlayerApiResponse.data.id}`,
+          ],
+          {
+            type: "text/plain",
+          }
+        );
+      }
+      isBtnClicked = false;
+      return new Blob(
+        [
+          `${process.env.REACT_APP_TEST_URL}/${getPlayerInfoApiResponse.data.id}`,
+        ],
+        { type: "text/plain" }
+      );
     } else {
-      userId = response.data.id;
+      return new Blob([process.env.REACT_APP_TEST_URL], { type: "text/plain" });
     }
-    url = `${process.env.REACT_APP_TEST_URL}/${userId}`;
-    window.navigator.clipboard.writeText(url).then(() => {
+  };
+
+  const testLinkUrl = () => {
+    return new ClipboardItem({
+      "text/plain": clipboardFunction(),
+    });
+  };
+
+  const handleClickGetTestLinkBtn = () => {
+    isBtnClicked = true;
+    const clipboardItem = testLinkUrl();
+    window.navigator.clipboard.write([clipboardItem]).then(() => {
       showToast();
     });
   };
