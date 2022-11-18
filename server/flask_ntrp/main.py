@@ -1,12 +1,17 @@
 import json
 import os
+import sys
 from flask import Flask, url_for, render_template, request
 from middleware import PrefixMiddleware
 from db import get_db
 import requests
 
 app = Flask(__name__, instance_relative_config=True)
-app.debug = False
+if sys.argv[1] == 'develop':
+    app.debug = True
+else:
+    app.debug = False
+
 app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/ntrp')
 app.config.from_mapping(
     SECRET_KEY='dev',

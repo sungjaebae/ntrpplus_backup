@@ -58,6 +58,6 @@ services:
     volumes:
       - ./flask_ntrp:/usr/src/app/
       - ./instance:/usr/src/instance/
-    command: sh -c './wait-for.sh naver.com:80 -- sh -c "cd .. && python ./app/main.py"'
+    command: sh -c './wait-for.sh naver.com:80 -- sh -c "cd .. && python ./app/main.py develop"'
     extra_hosts:
       - "host.docker.internal:host-gateway"
