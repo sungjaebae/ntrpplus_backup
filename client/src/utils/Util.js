@@ -45,6 +45,6 @@ export const returnNtrpCharacterImage = (ntrp) => {
 };
 
 export const convertTimeToStr = (time) => {
-  const date = new Date(time);
-  return `${date.getFullYear()}년 ${date.getMonth()}월 ${date.getDay()}일`;
+  const newDate = new Date(time);
+  return `${newDate.getFullYear()}년 ${newDate.getMonth() + 1}월 ${newDate.getDate()}일`;
 };
