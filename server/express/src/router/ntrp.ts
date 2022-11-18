@@ -11,7 +11,14 @@ ntrpRouter.get('/', (req, res) => {
 //플레이어 생성
 ntrpRouter.post('/player', async (req, res, next) => {
   try {
-    const { age, gender, tennisHistory, phoneNumber, nickname } = req.body
+    let { age, gender, tennisHistory, phoneNumber, nickname } = req.body
+    let last4digits
+    if (phoneNumber) {
+      last4digits = phoneNumber.slice(-4, phoneNumber.length)
+    }
+    if (!nickname && !last4digits) {
+      nickname = last4digits
+    }
     const user = await prisma.user.create({
       data: { age, gender, tennisHistory, phoneNumber, nickname },
     })
@@ -123,6 +130,9 @@ ntrpRouter.get('/test/player/:playerId', async (req, res, next) => {
         player: true,
         panel: true,
       },
+      orderBy: {
+        testEndTime: 'desc',
+      },
     })
     //console.log("get player's tests", testResult)
     return res.json(testResult)
@@ -141,6 +151,9 @@ ntrpRouter.get('/test/panel/:panelId', async (req, res, next) => {
         player: true,
         panel: true,
       },
+      orderBy: {
+        testEndTime: 'desc',
+      },
     })
     //console.log("get panel's tests", testResult)
     return res.json(testResult)
@@ -158,6 +171,9 @@ ntrpRouter.get('/test/:panelId/:playerId', async (req, res, next) => {
       include: {
         player: true,
         panel: true,
+      },
+      orderBy: {
+        testEndTime: 'desc',
       },
     })
     //console.log("get panel and player pair's tests", testResult)

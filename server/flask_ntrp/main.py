@@ -6,7 +6,7 @@ from db import get_db
 import requests
 
 app = Flask(__name__, instance_relative_config=True)
-app.debug = True
+app.debug = False
 app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/ntrp')
 app.config.from_mapping(
     SECRET_KEY='dev',
@@ -15,7 +15,7 @@ app.config.from_mapping(
 if app.debug:
     URL = 'https://ntrp.ml/api/ntrp'
 else:
-    URL = 'https://ntrpplus.com'
+    URL = 'https://ntrpplus.com/api/ntrp'
 
 
 @app.route('/')

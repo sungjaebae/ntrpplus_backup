@@ -49,7 +49,7 @@ model user {
   gender        String?
   age           Int?
   tennisHistory Int?
-  nickname      String       @default("NTRPPlus 사용자")
+  nickname      String?       
   phoneNumber   String?
   playerResults testResult[] @relation("player")
   panelResults  testResult[] @relation("panel")
