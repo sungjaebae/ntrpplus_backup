@@ -84,7 +84,7 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <nav class="navbar fixed-top px-3" id="navbar">
-      <a class="navbar-brand fs-3" href="#"
+      <a class="navbar-brand fs-3" href="/"
         >NTRP<span class="ms-1 fs-2 color-secondary">plus</span></a
       >
     </nav>
@@ -218,7 +218,7 @@
                   var getSelectedValue = document.querySelector(
                     `input[name=${questionList[num]}_${i}]:checked`
                   );
-                  getSelectedValue = '';
+                  // getSelectedValue = '';
                   if (getSelectedValue == null) {
                     alert(`${i}번 문항을 체크해주세요!`);
                     const offset = $(`#question_${questionList[num]}_${i}`).offset();
