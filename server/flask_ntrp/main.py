@@ -21,6 +21,7 @@ if app.debug:
     URL = 'https://ntrp.ml/api/ntrp'
 else:
     URL = 'https://ntrpplus.com/api/ntrp'
+SLACK_URL = 'https://hooks.slack.com/services/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'
 
 
 @app.route('/')
@@ -39,6 +40,9 @@ def test():
     forehands = {}
     servenreturns = {}
     volleys = {}
+    # if not app.debug:
+    #     requests.post(url=SLACK_URL, json={
+    #         'channel': '#ntrp-plus-이벤트', 'text': '테스트가 시작됐습니다!', 'icon_emoji': ':tennis:'})
 
     for question in questions:
         if question['type'] == 'forehand':

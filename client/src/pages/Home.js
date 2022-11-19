@@ -4,10 +4,10 @@ const Home = () => {
   return (
     <div className="flex justify-center w-full">
       <div className="flex flex-col items-center w-2/3 md:w-2/5 mb-20">
-        <div className="text-text font-medium text-xl mt-10">
+        <div className="text-text font-medium text-3xl mt-10">
           NTRP<span className="ml-1 text-secondary-400">plus</span>
         </div>
-        <div className="text-4xl font-bold text-text mt-8">
+        <div className="text-3xl md:text-4xl font-bold text-text mt-8">
           테니스 실력 테스트
         </div>
         <img src={tedor} alt="logo" className="w-4/5 md:w-3/4 mt-12" />

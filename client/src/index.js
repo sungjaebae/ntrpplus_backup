@@ -9,7 +9,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 ChannelService.boot({
   "pluginKey": `${process.env.REACT_APP_CHANNEL_TALK_KEY}` //please fill with your plugin key
 });
-console.log(process.env.REACT_APP_CHANNEL_TALK_KEY);
 root.render(
   <React.StrictMode>
     <App />
