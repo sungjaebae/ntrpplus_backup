@@ -215,6 +215,12 @@
                 $("html, body").animate({scrollTop: offset.top - progressHeight}, 200);
               } else {
                 for(i = 1; i < questionLenList[num] + 1; i++){
+                  var question = document.querySelector(
+                    `input[name=${questionList[num]}_${i}]`
+                  );
+                  if(question.type === 'checkbox') {
+                    continue;
+                  }
                   var getSelectedValue = document.querySelector(
                     `input[name=${questionList[num]}_${i}]:checked`
                   );
