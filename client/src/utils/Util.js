@@ -1,3 +1,4 @@
+import axios from "axios";
 import { CharacterName, CharacterImage } from "./Constants";
 
 export const retrunNtrpCharacterName = (ntrp) => {
@@ -46,5 +47,24 @@ export const returnNtrpCharacterImage = (ntrp) => {
 
 export const convertTimeToStr = (time) => {
   const newDate = new Date(time);
-  return `${newDate.getFullYear()}년 ${newDate.getMonth() + 1}월 ${newDate.getDate()}일`;
+  return `${newDate.getFullYear()}년 ${
+    newDate.getMonth() + 1
+  }월 ${newDate.getDate()}일`;
+};
+
+export const sendSlackMessage = async (message) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
+  try {
+    await axios({
+      method: "post",
+      url: "/ntrp/slackwebhook",
+      data: { message: message },
+      headers: headers,
+    });
+  } catch (err) {
+    console.warn(err);
+  }
 };

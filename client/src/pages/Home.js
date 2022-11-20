@@ -1,6 +1,12 @@
 import tedor from "../tedor.svg";
 import { Link } from "react-router-dom";
+import { sendSlackMessage } from "../utils/Util";
+import { useEffect } from "react";
 const Home = () => {
+  useEffect(() => {
+    sendSlackMessage("새로운 유저가 들어왔습니다.");
+  }, []);
+
   return (
     <div className="flex justify-center w-full">
       <div className="flex flex-col items-center w-2/3 md:w-2/5 mb-20">

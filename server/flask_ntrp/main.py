@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-from flask import Flask, url_for, render_template, request
+from flask import Flask, url_for, render_template, request, jsonify
 from middleware import PrefixMiddleware
 from db import get_db
 import requests
@@ -40,9 +40,9 @@ def test():
     forehands = {}
     servenreturns = {}
     volleys = {}
-    # if not app.debug:
-    #     requests.post(url=SLACK_URL, json={
-    #         'channel': '#ntrp-plus-이벤트', 'text': '테스트가 시작됐습니다!', 'icon_emoji': ':tennis:'})
+    if not app.debug:
+        requests.post(url=SLACK_URL, json={
+            'channel': '#ntrp-plus-이벤트', 'text': '테스트가 시작됐습니다!', 'icon_emoji': ':tennis:'})
 
     for question in questions:
         if question['type'] == 'forehand':
@@ -91,6 +91,9 @@ def testPanel(userId):
     forehands = {}
     servenreturns = {}
     volleys = {}
+    if not app.debug:
+        requests.post(url=SLACK_URL, json={
+            'channel': '#ntrp-plus-이벤트', 'text': '테스트가 시작됐습니다!', 'icon_emoji': ':tennis:'})
 
     for question in questions:
         if question['type'] == 'forehand':
@@ -175,12 +178,16 @@ def result():
                 servenreturn_answers.append(q)
             if q[0].startswith('volley'):
                 volley_answers.append(q)
+        if not app.debug:
+            requests.post(url=SLACK_URL, json={
+                'channel': '#ntrp-plus-이벤트', 'text': f'{mobile} 님이 결과를 보고 있습니다!', 'icon_emoji': ':tennis:'})
 
         if playerId == '':
             if mobile == '':
                 jsonResponse = None
             else:
-                jsonResponse = requests.get(url=f'{URL}/player/{mobile}').json()
+                jsonResponse = requests.get(
+                    url=f'{URL}/player/{mobile}').json()
             if jsonResponse:
                 # 핸드폰 번호가 등록되어 있을 경우
                 playerId = jsonResponse['id']
@@ -327,6 +334,9 @@ def getResultDetail(testId):
         servenreturnResult = jsonResponse[0]['serveAndReturnScore']
         volleyResult = jsonResponse[0]['volleyScore']
         playerId = jsonResponse[0]['playerId']
+        if not app.debug:
+            requests.post(url=SLACK_URL, json={
+                'channel': '#ntrp-plus-이벤트', 'text': f'{playerId} 님이 결과를 보고 있습니다!', 'icon_emoji': ':tennis:'})
 
         ntrp = round(((forehandResult + backhandResult +
                      servenreturnResult + volleyResult) / 4), 2)
@@ -374,6 +384,19 @@ def getResultDetail(testId):
                   'kakao_share_image': kakaoShareImageFile, 'resultimage': resultImageFile}
 
         return render_template('test/result.html', result=result, testId=testId, playerId=playerId)
+
+
+@app.route('/slackwebhook', methods=['POST'])
+def sendSlackWebhook():
+    requestJson = request.get_json()
+    response = {}
+    if not app.debug:
+        response = requests.post(url=SLACK_URL, json={
+            'channel': '#ntrp-plus-이벤트', 'text': requestJson['message'], 'icon_emoji': ':tennis:'})
+        data = {'code': response.status_code}
+    else:
+        data = {'code': 200}
+    return jsonify(data)
 
 
 if __name__ == '__main__':
