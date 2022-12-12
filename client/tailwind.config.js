@@ -11,6 +11,7 @@ module.exports = {
         info: "#B8B8B8",
         text: "#4d4c4c",
         next: "#7a7a7a",
+        lightgreen: { 400: "#9CCC65", 500: "#8BC34A", 600: "#7CB342" },
       },
     },
   },

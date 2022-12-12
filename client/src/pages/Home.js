@@ -21,6 +21,12 @@ const Home = () => {
           테니스 실력 테스트 마스코트 "테도르"
         </div>
         <a
+          href={process.env.REACT_APP_LEAGUE_CHAT_URL}
+          className="w-full rounded-full border border-transparent bg-lightgreen-400 py-3 md:py-4 text-xl md:text-2xl text-center text-white font-normal hover:bg-lightgreen-600 my-2"
+        >
+          2023 테니스 리그 참여하기
+        </a>
+        <a
           href={process.env.REACT_APP_TEST_URL}
           className="w-full rounded-full border border-transparent bg-secondary-400 py-3 md:py-4 text-xl md:text-2xl font-normal text-white text-center hover:bg-secondary-600 my-2"
         >
