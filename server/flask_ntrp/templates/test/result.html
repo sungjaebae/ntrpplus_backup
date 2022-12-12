@@ -238,12 +238,15 @@
     </div>
   </div>
   <div class="result-final-wrap">
+    <a href="https://open.kakao.com/o/gRdhG7Re" class="result-final-btn-league"
+      >2023 테니스 리그 참여하기</a
+    >
     <a href="{{url_for('test')}}" class="result-final-btn-return"
       >테스트 다시하기</a
     >
-    <div class="result-final-btn-copy" id="secondImgCopyBtn">
+    <!-- <div class="result-final-btn-copy" id="secondImgCopyBtn">
       캐릭터 결과화면 다운받기
-    </div>
+    </div> -->
   </div>
   <div id="toast"></div>
 </article>
@@ -366,8 +369,8 @@
   document.getElementById("firstImgCopyBtn").onclick = () => {
     copyPicture();
   };
-  document.getElementById("secondImgCopyBtn").onclick = () => {
-    copyPicture();
-  };
+  // document.getElementById("secondImgCopyBtn").onclick = () => {
+  //   copyPicture();
+  // };
 </script>
 {% endblock %}
