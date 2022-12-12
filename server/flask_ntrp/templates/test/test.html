@@ -136,6 +136,18 @@
   <form action="/ntrp/result" method="post" name="testForm">
     {% if isPanel %}
     <input type="hidden" name="playerId" value="{{playerId}}" />
+    <div class="p-4">
+      <div class="text-center mt-3 fs-2">
+        이 테스트는 링크를 공유해 준 상대방의 실력을 측정합니다.
+      </div>
+      <div class="text-center mt-3 fs-2">내 실력을 테스트하러 가시겠어요?</div>
+      <div class="d-flex justify-content-center mt-5 mb-5">
+        <a href="/ntrp/test" class="btn-custom">
+          내 실력 측정하러 가기
+          <i class="fa-solid fa-arrow-right color-white"></i>
+        </a>
+      </div>
+    </div>
     {% endif %}
     <div id="profile">
       <div class="p-4 question_wrap" id="gender">
