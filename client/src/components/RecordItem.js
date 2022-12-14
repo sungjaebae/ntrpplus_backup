@@ -5,6 +5,7 @@ import {
 } from "../utils/Util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import useUserStore from "../data/User";
 
 const RecordItem = (props) => {
   const item = props.item;
@@ -18,8 +19,18 @@ const RecordItem = (props) => {
         4) *
         100
     ) / 100;
+
+  const userId = useUserStore((state) => state.userId);
+  const nickname = useUserStore((state) => state.nickname);
+
+  const handleClickRecordItem = () => {
+    window.localStorage.setItem("userId", userId);
+    window.localStorage.setItem("nickname", nickname);
+    window.location.href = "/ntrp/result/" + item.id;
+  };
+
   return (
-    <a href={"/ntrp/result/" + item.id}>
+    <div onClick={handleClickRecordItem}>
       <div className="flex justify-between">
         <div className="font-bold text-next text-lg">
           {convertTimeToStr(item.testEndTime)}
@@ -61,7 +72,7 @@ const RecordItem = (props) => {
           />
         </div>
       </div>
-    </a>
+    </div>
   );
 };
 

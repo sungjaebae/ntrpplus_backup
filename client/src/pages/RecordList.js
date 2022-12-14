@@ -1,14 +1,27 @@
 import useUserStore from "../data/User";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import RecordItem from "../components/RecordItem";
 
 const RecordList = () => {
-  const userId = useUserStore((state) => state.userId);
-  const nickname = useUserStore((state) => state.nickname);
+  let userId = useUserStore((state) => state.userId);
+  let nickname = useUserStore((state) => state.nickname);
+  const setUserId = useUserStore((state) => state.setUserId);
+  const setNickname = useUserStore((state) => state.setNickname);
   const [records, setRecords] = useState([]);
   const getRecords = async () => {
+    if (!userId) {
+      const tempUserId = window.localStorage.getItem("userId");
+      const tempNickname = window.localStorage.getItem("nickname");
+      if (!tempUserId) {
+        window.location.href = "";
+      }
+      userId = tempUserId;
+      nickname = tempNickname;
+      setUserId(tempUserId);
+      setNickname(nickname);
+    }
     const response = await axios.get(`/api/ntrp/test/player/${userId}`);
     setRecords(response.data);
   };
