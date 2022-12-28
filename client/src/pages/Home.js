@@ -1,4 +1,3 @@
-import tedor from "../tedor.svg";
 import { Link } from "react-router-dom";
 import { sendSlackMessage } from "../utils/Util";
 import { useEffect } from "react";
@@ -18,15 +17,15 @@ const Home = () => {
     <div className="flex flex-col items-center w-full">
       <Carousel images={images} name={"bannerCarousel"} />
       <div className="flex flex-col items-center w-2/3 md:w-2/5 mb-20">
-        <div className="text-text font-medium text-3xl mt-10">
+        <div className="text-text font-medium text-lg md:text-3xl mt-4 md:mt-6">
           NTRP<span className="ml-1 text-secondary-400">plus</span>
         </div>
-        <div className="text-3xl md:text-4xl font-bold text-text mt-8">
+        <div className="text-2xl md:text-4xl font-bold text-text mt-3 md:mt-5">
           테니스 실력 테스트
         </div>
-        <img src={tedor} alt="logo" className="w-4/5 md:w-3/4 mt-12" />
-        <div className="mt-4 mb-8 text-info">
-          테니스 실력 테스트 마스코트 "테도르"
+        <div className="text-2xl md:text-4xl font-bold text-text mt-6 md:mt-10 text-center">
+          <div>테생아, 테린이, 테른이</div>
+          <div className="mt-3">내 실력은 뭐지?</div>
         </div>
         <a
           href={process.env.REACT_APP_LEAGUE_CHAT_URL}
