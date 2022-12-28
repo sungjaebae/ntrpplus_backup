@@ -14,6 +14,7 @@ const RecordList = () => {
     if (!userId) {
       const tempUserId = window.localStorage.getItem("userId");
       const tempNickname = window.localStorage.getItem("nickname");
+      console.log(tempUserId);
       if (!tempUserId) {
         window.location.href = "";
       }
