@@ -27,12 +27,12 @@ const Home = () => {
           <div>테생아, 테린이, 테른이</div>
           <div className="mt-3">내 실력은 뭐지?</div>
         </div>
-        <a
-          href={process.env.REACT_APP_LEAGUE_CHAT_URL}
-          className="w-full rounded-full border border-transparent bg-lightgreen-400 py-3 md:py-4 text-xl md:text-2xl text-center text-white font-normal hover:bg-lightgreen-600 my-2"
-        >
-          2023 테니스 리그 참여하기
-        </a>
+
+        <div className="w-full grid grid-cols-2 gap-2 my-7 md:my-10">
+          <div className="col-span-1 rounded-lg bg-white shadow-xl flex flex-col px-6 py-3 justify-between">
+            <div className="font-bold text-sm sm:text-lg text-text">
+              총 검사 수
+            </div>
         <a
           href={process.env.REACT_APP_TEST_URL}
           className="w-full rounded-full border border-transparent bg-secondary-400 py-3 md:py-4 text-xl md:text-2xl font-normal text-white text-center hover:bg-secondary-600 my-2"
