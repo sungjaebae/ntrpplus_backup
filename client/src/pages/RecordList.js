@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import RecordItem from "../components/RecordItem";
+import RecordChart from "../components/RecordChart";
 
 const RecordList = () => {
   let userId = useUserStore((state) => state.userId);
@@ -10,6 +11,7 @@ const RecordList = () => {
   const setUserId = useUserStore((state) => state.setUserId);
   const setNickname = useUserStore((state) => state.setNickname);
   const [records, setRecords] = useState([]);
+  const chartData = [];
   const getRecords = async () => {
     if (!userId) {
       const tempUserId = window.localStorage.getItem("userId");
@@ -26,6 +28,23 @@ const RecordList = () => {
     setRecords(response.data);
   };
 
+  records.forEach((record) => {
+    if (record.panelId === record.playerId) {
+      chartData.push({
+        x: record.testStartTime,
+        y:
+          Math.round(
+            ((record.forehandScore +
+              record.backhandScore +
+              record.serveAndReturnScore +
+              record.volleyScore) /
+              4) *
+              100
+          ) / 100,
+      });
+    }
+  });
+
   useEffect(() => {
     getRecords();
   }, []);
@@ -35,6 +54,9 @@ const RecordList = () => {
       <div className="w-5/6 md:w-2/3 mx-auto flex flex-col items-center">
         <div className="self-start text-3xl md:text-4xl font-bold text-text mt-8 mb-14">
           {nickname}님의 NTRP 기록
+        </div>
+        <div className="w-full">
+          <RecordChart data={chartData} />
         </div>
         <div className="w-full">
           {records.map((it) => (

@@ -2,13 +2,21 @@ import tedor from "../tedor.svg";
 import { Link } from "react-router-dom";
 import { sendSlackMessage } from "../utils/Util";
 import { useEffect } from "react";
+import Carousel from "../components/Carousel";
 const Home = () => {
   useEffect(() => {
     sendSlackMessage("새로운 유저가 들어왔습니다.");
   }, []);
 
+  const images = [
+    { title: "Banner1", src: "/images/banner1.png" },
+    { title: "Banner2", src: "/images/banner2.png" },
+    { title: "Banner3", src: "/images/banner3.png" },
+  ];
+
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex flex-col items-center w-full">
+      <Carousel images={images} name={"bannerCarousel"} />
       <div className="flex flex-col items-center w-2/3 md:w-2/5 mb-20">
         <div className="text-text font-medium text-3xl mt-10">
           NTRP<span className="ml-1 text-secondary-400">plus</span>

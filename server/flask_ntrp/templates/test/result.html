@@ -19,20 +19,13 @@
 
 {% endblock %} {% block content %}
 <article id="result-content">
-  <div class="flex-center">
-    <div class="btn-custom" id="firstImgCopyBtn">
-      결과화면 다운받기<i
-        class="fa-regular fa-arrow-down-to-line color-white"
-      ></i>
-    </div>
-  </div>
-  <div class="result-character-description-wrap">
+  <!-- <div class="result-character-description-wrap">
     <div class="result-character-description-content">
       {% for line in result['character_description'].split('\n') %} {{ line }}
       <br />
       {% endfor %}
     </div>
-  </div>
+  </div> -->
   <div class="result-content-title">검사 결과</div>
   <div class="result-content-graph-wrap">
     <div class="result-content-graph-item">
@@ -204,10 +197,20 @@
       <span class="result-content-graph-item-score">{{result['ntrp']}}</span>
     </div>
     <div class="result-content-description-content">
-      {% for line in result['ntrp_content'].split('\n') %} {{ line }}
-      <br />
+      {% for line in result['ntrp_content'].split('\n') %}
+      <div class="result-content-description-content-line">
+        <div>&#9989;</div>
+        <div>{{ line }}</div>
+      </div>
       {% endfor %}
     </div>
+  </div>
+  <div style="margin-top: 20px" id="ntrpBanner">
+    <img
+      src="{{ url_for('static', filename='banner.png')}}"
+      alt="NTRP Banner"
+      width="100%"
+    />
   </div>
   <div class="result-content-share-wrap">
     <div class="result-content-share-text">
@@ -241,9 +244,7 @@
     <a href="https://open.kakao.com/o/gRdhG7Re" class="result-final-btn-league"
       >2023 테니스 리그 참여하기</a
     >
-    <a href="{{url_for('test')}}" class="result-final-btn-return"
-      >테스트 다시하기</a
-    >
+    <a href="/" class="result-final-btn-return">홈 화면으로 이동하기</a>
     <!-- <div class="result-final-btn-copy" id="secondImgCopyBtn">
       캐릭터 결과화면 다운받기
     </div> -->
@@ -307,6 +308,19 @@
       toast("복사완료");
     });
   };
+  const ntrpBanner = document.getElementById("ntrpBanner");
+  ntrpBanner.onclick = async () => {
+    await fetch("/ntrp/slackwebhook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: "배너가 클릭됐습니다. 결과화면 배너",
+      }),
+    });
+    window.location.href = `${config.leagueUrl}`;
+  };
 </script>
 <script>
   let removeToast;
@@ -366,9 +380,9 @@
   document.getElementById("imgCopyBtn").onclick = () => {
     copyPicture();
   };
-  document.getElementById("firstImgCopyBtn").onclick = () => {
-    copyPicture();
-  };
+  // document.getElementById("firstImgCopyBtn").onclick = () => {
+  //   copyPicture();
+  // };
   // document.getElementById("secondImgCopyBtn").onclick = () => {
   //   copyPicture();
   // };

@@ -399,5 +399,14 @@ def sendSlackWebhook():
     return jsonify(data)
 
 
+@app.route('/privacy')
+def privacy():
+    return render_template('test/privacy.html')
+
+@app.route('/marketingterm')
+def marketingterm():
+    return render_template('test/marketingterm.html')
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', 80)

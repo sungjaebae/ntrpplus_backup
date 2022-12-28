@@ -1,0 +1,669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>NTRP PLUS 개인정보처리방침</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ff0e9a03-e048-49d2-bd65-4004ac209331" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🎾</span></div><h1 class="page-title">NTRP PLUS 개인정보처리방침</h1></header><div class="page-body"><p id="c7141840-fbd9-4639-bbea-e673a58988d6" class="">안녕하세요 : )</p><p id="14731c7b-8975-4561-a80a-a7dfcf8faaf6" class="">NTRP PLUS은(는) 개인정보 보호법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 등 단체가 준수하여야 할 국내 개인정보 보호 법령을 준수하며, 관련 법령에 의거한 개인정보 처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.</p><p id="3a924f73-1dbe-4b94-964f-9b6da2aad98f" class="">본 개인정보 처리방침은 단체가 운영하는 NTRP PLUS 관련 제반서비스(이하 &#x27;NTRP PLUS&#x27;라 한다.)에 적용되며 다음과 같은 내용을 담고 있습니다.</p><p id="61b55fb1-feec-4ec5-823d-ad10f145a009" class="">본 개인정보 처리방침에서 사용하는 용어의 의미는 관련 법령 및 NTRP PLUS의 이용약관에서 정한 바에 따르며, 그 밖의 사항은 일반적인 상관례에 따릅니다.</p><h3 id="a73609d8-fe08-42c2-8af4-9089180b92eb" class=""><strong>1. 수집하는 개인정보의 항목 및 수집 방법</strong></h3><p id="7f2420da-1ec4-4f8f-84bd-e8bb1125027b" class=""><strong>가. 수집하는 개인정보의 항목</strong></p><p id="6776eff2-d4a2-4ad0-b62f-46195d3f45e1" class="">이용자는 전화번호를 입력하지 않아도 &#x27;NTRP PLUS&#x27;에서 실력 테스트를 진행할 수 있습니다. 이용자가 본인의 실력 테스트 결과를 기록하거나, 다른 사람으로부터 본인의 실력을 테스트 받고 싶을 경우 등과 같은 서비스를 이용하기 위해 전화번호를 입력한 경우, &#x27;NTRP PLUS&#x27;은(는) 다음과 같이 서비스 제공에 필요한 최소한의 개인정보를 수집하고 있습니다.</p><p id="69c6134d-bf9a-48c2-be77-a5732f935bbb" class="">(1) &#x27;전화번호&#x27;는 선택항목으로 수집됩니다.</p><p id="74ec6527-dbae-474a-b760-cd6fc37051fa" class="">(2) IP Address, 쿠키, 기기정보, 서비스 이용기록, 불량 이용 기록 등이 생성되어 수집될 수 있습니다.</p><p id="a02b61d6-faaa-4ef0-8916-d95443479b30" class="">(3) 추가로 개인정보를 수집할 경우, 해당 개인정보 시점에 회원에게 &#x27;수집하는 개인정보 항목, 개인정보의 수집 및 이용 목적, 개인정보의 보유 및 이용기간&#x27;에 대해 안내 드리고 동의를 받습니다.</p><p id="72d469d2-115f-491a-a984-9d598ab0ec9a" class=""><strong>나. 개인정보의 수집 방법</strong></p><p id="f3412cb3-68d8-499a-9c21-c1f3039e9ce0" class="">&#x27;NTRP PLUS&#x27;은(는) 다음과 같은 방법으로 개인정보를 수집합니다.</p><p id="775482a4-5809-4426-baa0-27efbe666970" class="">(1) 서비스 이용 과정에서 회원이 개인정보 수집에 대해 동의한 정보와 직접 정보를 입력하는 경우 해당 개인정보를 수집합니다.</p><p id="70c3e7b3-77d4-48f2-a21b-2b8f66f685aa" class="">(2) 기기정보 등과 같은 생성정보는 PC 웹, 모바일 웹/앱 이용 과정에서 자동으로 생성되어 수집될 수 있습니다.</p><h3 id="9a8da4e0-3f5f-4d30-8f99-18a6e063b810" class=""><strong>2. 개인정보의 수집 및 이용 목적</strong></h3><p id="135079db-2f60-451b-9577-b4bdc82b3065" class="">&#x27;NTRP PLUS&#x27;은(는) 수집한 개인정보를 서비스의 회원 관리, 서비스 제공과 개발 및 개선 등 다음의 목적을 위해 활용합니다. 이용 목적이 변경될 시에는 반드시 사전에 이용자에게 동의를 구하도록 하겠습니다.</p><p id="8d539908-5d04-4290-bcdd-09fdeec712a2" class="">(1) 서비스 이용에 따른 가입의사 확인, 회원 식별, 원활한 의사소통 경로의 확보, 새로운 정보의 소개 및 고지사항 전달, 서비스 방문 및 이용기록 분석, 회원 간 정보 파악을 위해 이용합니다</p><p id="6cc9c317-5a8c-4af3-ae0d-752c898e9192" class="">(2) 회원의 NTRP를 기록하고 상대방으로부터 NTRP 측정 결과를 받는 서비스 제공을 위해 이용합니다.</p><p id="6bf9eced-4fec-49f7-9ea0-1c221f129fe4" class="">(3) &#x27;NTRP PLUS&#x27; 서비스 제공과 신규 서비스 발굴 및 기존 서비스 개선 등을 위해 이용합니다.</p><p id="663a9699-5dab-4c69-bd23-41b14c616f6e" class="">(4) 서비스 이용과 접속 빈도 분석, 서비스 이용에 대한 통계, 서비스 분석 등을 위해 이용합니다.</p><p id="43c16937-a873-48f0-ad91-801b1fa492e2" class="">(5) 법령 및 &#x27;NTRP PLUS&#x27; 이용약관을 위반하는 회원에 대한 이용 제한 조치, 부정 이용 행위를 포함하여 서비스의 원활한 운영에 지장을 주는 행위에 대한 방지 및 제재, 계정 도용 방지, 약관 개정 등의 고지사항 전달, 분쟁 조정을 위한 기록 보존, 고객 문의 처리 등 회원 보호 및 서비스 운영을 위해 이용합니다.</p><p id="fda0ceec-5e96-4b41-a1a4-f084184ceb08" class="">(6) 이벤트 정보 및 광고성 정보 등 마케팅 및 프로모션 목적을 위해 이용합니다.</p><h3 id="8a780e45-1dda-4edb-93c0-dedad3749fcf" class=""><strong>3. 개인정보의 보유 및 이용기간</strong></h3><p id="f95c76be-b2c1-4cc2-bf44-cf7724fd7254" class="">&#x27;NTRP PLUS&#x27;은(는) 원칙적으로 회원의 개인정보를 회원 탈퇴 시 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 안전하게 보관합니다.</p><p id="94506289-c804-4f50-ad9a-083cb37157d5" class="">(1) 전화번호, 서비스 이용기록 , 접속 로그 , 쿠키 , 접속 IP 정보</p><ul id="cde23e6e-08dd-42e8-8b25-3b5e57441326" class="bulleted-list"><li style="list-style-type:disc">보존 이유 : 전자상거래등에서의 소비자보호에 관한 법률</li></ul><ul id="113d045e-b23f-4fe4-9b99-634577d985cc" class="bulleted-list"><li style="list-style-type:disc">보존 기간 : 5년</li></ul><p id="2056c746-2f45-4273-a28b-ca8df18fff65" class="">(2) 표시/광고에 관한 기록</p><ul id="a064bfbf-81a7-4b1e-9322-43b5bc06ad38" class="bulleted-list"><li style="list-style-type:disc">보존 이유 : 전자상거래등에서의 소비자보호에 관한 법률</li></ul><ul id="3bb2a20c-bb75-4c81-809d-85ace409bfd0" class="bulleted-list"><li style="list-style-type:disc">보존 기간 : 6개월</li></ul><p id="7a04de74-31e3-4c7e-babe-5ef9665f60e2" class="">(3) 계약 또는 청약철회 등에 관한 기록</p><ul id="99a8403a-34ce-4b4d-a820-e1e5989e7a34" class="bulleted-list"><li style="list-style-type:disc">보존 이유 : 전자상거래등에서의 소비자보호에 관한 법률</li></ul><ul id="d9188624-7d00-48a5-9855-9d3b2ae2baf9" class="bulleted-list"><li style="list-style-type:disc">보존 기간 : 5년</li></ul><p id="96b0c80b-f060-496d-939b-5001669c8615" class="">(4) 소비자의 불만 또는 분쟁처리에 관한 기록</p><ul id="8107b3db-4636-46ca-9106-6b162011cb34" class="bulleted-list"><li style="list-style-type:disc">보존 이유 : 전자상거래등에서의 소비자보호에 관한 법률</li></ul><ul id="31bdf908-c85c-4dfd-9cac-bac39b24c0b1" class="bulleted-list"><li style="list-style-type:disc">보존 기간 : 3년</li></ul><p id="c75eaaee-75b0-41f4-bda1-afd4e88e7deb" class="">(5) 방문에 관한 기록</p><ul id="d1a70635-c9fb-4f54-b6a8-d9d21b3093c6" class="bulleted-list"><li style="list-style-type:disc">보존 이유 : 통신비밀보호법</li></ul><ul id="b6836621-83dc-4167-9e81-74d1f4a6e5b0" class="bulleted-list"><li style="list-style-type:disc">보존 기간 : 3개월</li></ul><h3 id="910261d0-0274-482a-b2cb-9bc04e66122c" class=""><strong>4. 개인정보의 파기절차 및 방법</strong></h3><p id="a4d566a3-fb51-4e84-9ae8-4f7b69aab09d" class="">&#x27;NTRP PLUS&#x27;은(는) 개인정보 파기 시 재생이 불가능한 방법으로 파기하고 있습니다. 개인정보 파기절차 및 방법은 다음과 같습니다.</p><p id="7ce6f5d5-c47e-4e88-98c8-44b6f7f1e441" class=""><strong>가. 파기 절차</strong></p><ul id="29ddb789-93f8-4c9d-a8da-9a2185744982" class="bulleted-list"><li style="list-style-type:disc">이용자가 회원가입 등을 위해 입력한 정보는 목적이 달성된 후 별도의 DB로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조)일정 기간 저장된 후 파기됩니다.</li></ul><ul id="eedf9ded-6382-4bc5-86e6-1dc11d6d6172" class="bulleted-list"><li style="list-style-type:disc">동 개인정보는 법률에 의한 경우가 아니고서는 보유되는 이외의 다른 목적으로 이용되지 않습니다.</li></ul><p id="27350522-5c8f-4f25-9c12-a71f06b8b424" class=""><strong>나. 파기 방법</strong></p><ul id="f3be51a1-9cbb-4a26-a805-2662b1f5c887" class="bulleted-list"><li style="list-style-type:disc">종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다.</li></ul><ul id="2f6b7ddc-d581-44e6-9cae-c2117bbe920e" class="bulleted-list"><li style="list-style-type:disc">전자적 파일 형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.</li></ul><h3 id="0e35f0f3-e6c6-4a24-b2ad-a94315b0bad4" class=""><strong>5. 정보주체의 권리∙의무 및 그 행사방법</strong></h3><ol type="1" id="352db0c2-1455-44aa-846d-e819a826cf6a" class="numbered-list" start="1"><li>이용자는 언제든지 등록되어 있는 자신 개인정보를 조회하거나 수정할 수 있으며, &#x27;NTRP PLUS&#x27;의 개인정보의 처리에 동의하지 않는 경우 동의를 거부하거나 가입 해지(서비스 탈퇴)를 요청할 수 있습니다. 다만, 그러한 경우 서비스의 일부 또는 전부 이용이 어려울 수 있습니다.</li></ol><ol type="1" id="6012c119-6968-4473-939b-8d366e3536cc" class="numbered-list" start="2"><li>이용자가 본인의 개인정보 조회, 수정을 위해서는 개인정보보호책임자 및 담당자에게 서면, 전화 또는 E-mail로 연락하시면 지체 없이 조치하겠습니다. 가입 해지(동의 철회)를 위해서는 ‘개인정보보호책임자에게 서면, 전화 또는∙ E-mail로 연락’하시기 바랍니다. 단, 서비스를 탈퇴하시면 모든 이용자 정보가 삭제되며 한 번 삭제된 정보는 복구할 수 없습니다.</li></ol><ol type="1" id="fcf6e1ed-8115-44e0-ae73-f1e9c5402ef2" class="numbered-list" start="3"><li>이용자가 개인정보의 오류에 대한 정정을 요청하는 경우에는 정정을 완료하기 전까지 당해 개인정보를 이용 또는 제공하지 않으며 또한 잘못된 개인정보를 제3 자에게 이미 제공한 경우에는 정정 처리결과를 제3자에게 지체 없이 통지하여 정정이 이루어지도록 조치합니다.</li></ol><ol type="1" id="ba8b70cd-ef8c-43ee-94ba-3b82f9f735de" class="numbered-list" start="4"><li>&#x27;NTRP PLUS&#x27;는 이용자 혹은 법정대리인의 요청에 의해 해지 또는 삭제된 개인정보는 관련 법과 정해진 규정에 따라 안전하게 처리하고 그 외의 용도로 열람 또는 이용할 수 없도록 처리하고 있습니다.</li></ol><ol type="1" id="0a645826-b730-4b35-a38e-3f212968a2c4" class="numbered-list" start="5"><li>정보주체는 개인정보보호법 등 관계법령을 위반하여 &#x27;NTRP PLUS&#x27;가 처리하고 있는 정보주체 본인이나 타인의 개인정보 및 사생활을 침해하여서는 아니 됩니다.</li></ol><h3 id="75116458-e15d-4b3c-bc8d-77a930decce7" class=""><strong>6. 개인정보 자동 수집 장치의 설치, 운영 및 거부에 관한 사항</strong></h3><p id="d562dc31-9414-4dc5-802e-ff3b8319263f" class="">&#x27;NTRP PLUS&#x27;은(는) 이용자에게 개별적인 맞춤 서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 &#x27;쿠키(cookie)&#x27;를 사용합니다.</p><p id="8bc47bd5-89a9-4cca-a4c1-7eead65d8f47" class=""><strong>가. 쿠키 및 세션 정의</strong></p><ol type="1" id="fd54e9a4-2be2-49f0-a213-3157a42a3b20" class="numbered-list" start="1"><li>웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며, 이용자들의 PC 컴퓨터 내의 하드디스크에 저장되기도 합니다. 모바일 어플리케이션과 같이 쿠키 기술을 사용할 수 없는 경우에는 쿠키와 유사한 기능을 수행하는 기술 (광고식별자 등)을 사용할 수도 있습니다.</li></ol><p id="d32b9cfe-3379-4e80-8d05-89761b4000ec" class=""><strong>나. 쿠키 및 세션의 사용 목적</strong></p><p id="655c1722-2077-4255-b778-5395f3a29840" class="">쿠키와 세션은 이용자가 설정한 환경을 유지하도록 함으로써 &#x27;NTRP PLUS&#x27; 서비스의 편리한 사용을 도우며, 이용자의 방문 기록, 이용 형태 등을 알게 해줌으로써 이를 통한 최적화된 맞춤 서비스를 제공하고 서비스 개선의 척도로 활용됩니다. &#x27;NTRP PLUS&#x27;가 쿠키 및 세션을 통해 수집하는 정보는 &#x27;수집하는 개인정보의 항목&#x27;과 같으며, &#x27;개인정보의 수집 및 이용목적&#x27; 외의 용도로는 사용하지 않습니다.</p><ul id="6c74fc45-b275-466b-a7fa-3d05cc89319f" class="bulleted-list"><li style="list-style-type:disc">&#x27;NTRP PLUS&#x27; 방문 및 이용형태, 검색어 등 &#x27;NTRP PLUS&#x27; 서비스의 사용 정도의 파악을 통해 마케팅 및 개인 맞춤 서비스 제공</li></ul><p id="0e6b79a0-9b7c-4968-8556-de681dbdb779" class=""><strong>다. 쿠키 설정 거부</strong></p><ol type="1" id="ea138ccd-2ed9-4d30-a970-800f6c171506" class="numbered-list" start="1"><li>이용자는 쿠키에 대한 선택권을 가지며, 옵션을 선택함으로써 모든 쿠키의 허용, 동의를 통한 쿠키의 허용, 모든 쿠키의 차단을 스스로 결정할 수 있습니다. 단, 쿠키 저장을 거부하는 경우 로그인이 필요한 일부 서비스 이용에 어려움이 발생할 수 있습니다.</li></ol><h3 id="ee83108a-70f9-4299-abbe-33643fd2baa0" class=""><strong>7. 개인정보관리책임자 및 담당자의 연락처</strong></h3><p id="d92c93f3-d577-49c3-a16a-5521942bc309" class="">‘NTRP PLUS&#x27; 서비스를 이용하며 발생하는 모든 개인정보보호 관련 민원을 아래 연락처에 신고하실 수 있습니다. &#x27;NTRP PLUS&#x27; 은 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다.</p><ul id="e9d84b89-521b-4a33-8954-d5cf5b957d87" class="bulleted-list"><li style="list-style-type:disc">성명 : 오진석</li></ul><ul id="6dbfd76c-ad0f-4b2f-a0bc-fac0e75efcb3" class="bulleted-list"><li style="list-style-type:disc">연락처 : <a href="mailto:official.gogetters.ko@gmail.com">official.gogetters.ko@gmail.com</a></li></ul><p id="8a898a93-17b1-4ad0-81b6-1e6cc51d0905" class="">기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다.</p><ul id="d612cf7b-fee7-419c-b1b1-082a1ce18fb1" class="bulleted-list"><li style="list-style-type:disc">개인정보분쟁조정위원회 (<a href="http://www.kopico.go.kr/">www.kopico.go.kr</a> / 1833-6972)</li></ul><ul id="11504e15-4fd6-441e-8ca7-d44f0d0de8ac" class="bulleted-list"><li style="list-style-type:disc">개인정보침해신고센터 (<a href="http://www.118.or.kr/">www.118.or.kr</a> / 118)</li></ul><ul id="e3510822-a98c-4637-a15c-c7c95ac9c343" class="bulleted-list"><li style="list-style-type:disc">정보보호마크인증위원회 (<a href="http://www.eprivacy.or.kr/">www.eprivacy.or.kr</a> / 02-580-0533~4)</li></ul><ul id="da3045fa-5d5f-4f02-8190-31517f2420c9" class="bulleted-list"><li style="list-style-type:disc">대검찰청 첨단범죄수사과 (<a href="http://www.spo.go.kr/">http://www.spo.go.kr</a> / 02-3480-2000)</li></ul><ul id="e4199b39-95b9-472c-8e5b-82213f041fd8" class="bulleted-list"><li style="list-style-type:disc">경찰청 사이버테러대응센터 (<a href="http://www.ctrc.go.kr/">www.ctrc.go.kr</a> / 02-392-0330)</li></ul><h3 id="e6b01a4e-83c0-45b5-b0db-2e1f672df3fe" class=""><strong>8. 개인정보의 안전성 확보조치</strong></h3><p id="4205b0c4-f0c1-4b75-85b8-364145ad953c" class="">&#x27;NTRP PLUS&#x27;은(는) 고객님의 개인정보를 보호하기 위해 다음과 같이 기술적 대책과 관리적 대책을 마련하여 적용하고 있습니다.</p><ol type="1" id="396b2d70-0c7f-4a63-8663-daec924f5910" class="numbered-list" start="1"><li>이용자의 개인정보는 네트워크상의 전송데이터를 암호화하여 보호하고 있습니다.</li></ol><ol type="1" id="576ea860-565e-4b87-a200-0e96e30e25ae" class="numbered-list" start="2"><li>&#x27;NTRP PLUS&#x27;은(는) 고객님의 개인정보에 대한 접근권한을 최소한의 인원으로 제한하고 있습니다.</li></ol><ol type="1" id="7ec1e33a-abc7-491b-bcc0-099520eb8845" class="numbered-list" start="3"><li>&#x27;NTRP PLUS&#x27;은(는) 고객님 개인의 실수나 기본적인 인터넷의 위험성 때문에 일어나는 일들에 대해 책임을 지지 않습니다.</li></ol><ol type="1" id="c031440e-3d66-4e6a-b9f9-732830ec4e77" class="numbered-list" start="4"><li>이용자의 경우 개개인이 본인의 개인정보를 보호하기 위해서 자신의 정보를 적절하게 관리하고 여기에 대한 책임을 져야 합니다.</li></ol><ol type="1" id="f862dfc5-0391-492e-a373-0d657930cdeb" class="numbered-list" start="5"><li>그 외 내부 관리자의 실수나 기술관리 상의 사고로 인해 개인정보의 상실, 유출, 변조, 훼손이 유발될 경우 회사는 지체 없이 이용자에게 사실을 알리고 적절한 대책과 보상을 강구할 것입니다.</li></ol><h3 id="f62791ef-24bb-4155-b607-1d7a79573898" class=""><strong>9. 기타</strong></h3><ol type="1" id="cd024b2e-9d08-4f48-8000-d998909897e7" class="numbered-list" start="1"><li>&#x27;NTRP PLUS&#x27;은 회원 개인의 실수나 기본적인 인터넷 위험성 때문에 일어나는 일들에 대해 책임을 지지 않습니다. 회원은 개인정보를 보호받을 권리와 함께 스스로를 보호하고 타인의 정보를 침해하지 않을 의무가 있습니다. 비밀번호를 포함한 회원의 개인정보가 유출되지 않도록 조심하시고, 타인의 개인정보 및 저작권을 훼손하지 않도록 유의해 주십시오.</li></ol><h3 id="1e587385-5600-47ff-b6b2-df2e654bbef0" class=""><strong>10. 고지의 의무</strong></h3><p id="62acef24-d56c-4625-99b7-6a521cab6182" class="">현 개인정보취급방침 내용 추가, 삭제 및 수정이 있을 시에는 시행일 최소 7일전부터 &#x27;NTRP PLUS&#x27; 공식 웹사이트 및 어플리케이션을 통해 공지할 것입니다. 다만, 이용자 권리의 중대한 변경이 발생할 때에는 최소 30일전에 공지하도록 하며, 필요 시 이용자의 동의를 다시 받을 수 있습니다.</p><p id="38d171bc-88b3-4112-b5ec-20f2abfc3b59" class="">개인정보보호취급방침 변경 공고일자 : 2022년 12월 22일</p></div></article></body></html>

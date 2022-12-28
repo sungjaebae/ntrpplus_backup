@@ -828,8 +828,14 @@ input[type="checkbox"]:checked + label {
   font-size: 24px;
 }
 
+.result-content-description-content-line {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
 .result-content-share-wrap {
-  margin-top: 4vw;
+  margin-top: 3vw;
   margin-bottom: 6vw;
   padding: 3vw;
   display: flex;
@@ -1067,7 +1073,7 @@ input[type="checkbox"]:checked + label {
   }
 
   .result-content-share-wrap {
-    margin-top: 6vw;
+    margin-top: 3vw;
     margin-bottom: 8vw;
     padding: 3vw;
     display: flex;
@@ -1221,6 +1227,7 @@ input[type="checkbox"]:checked + label {
   text-align: start;
   color: #4d4c4c;
   margin-top: 0;
+  vertical-align: middle;
 }
 
 .id-input-title {
@@ -1475,4 +1482,27 @@ nav {
     color: #fff;
     text-align: center;
   }
+}
+
+#id_input input[type="checkbox"] + label {
+  content: "";
+  display: inline-block;
+  padding: 0;
+  margin-bottom: 0;
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #cbcbcb;
+  border-radius: 15px;
+  vertical-align: middle;
+}
+
+#id_input input[type="checkbox"]:checked + label::after {
+  content: "✔";
+  color: #fff;
+  background-color: #21942c;
+  border-color: #21942c;
+  font-size: 18px;
+  text-align: center;
 }
