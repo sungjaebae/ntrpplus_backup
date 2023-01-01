@@ -15,7 +15,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      - NGINX_HOST=ntrp.ml
+      - NGINX_HOST=dev.ntrpplus.com
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
