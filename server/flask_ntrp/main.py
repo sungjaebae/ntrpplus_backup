@@ -407,6 +407,10 @@ def privacy():
 def marketingterm():
     return render_template('test/marketingterm.html')
 
+@app.route('/leagueOfTennis')
+def leagueOfTennis():
+    return render_template('leagueOfTennis.html')
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 80)
