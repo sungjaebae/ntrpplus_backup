@@ -1,0 +1,708 @@
+<html><head><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>LEAGUE of TENNIS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+	padding: 0 10px 0 10px;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.page-body {
+	padding: 0 20px 0 20px;
+}
+	
+</style></head><body><article id="68fa2334-3ba2-4996-a837-711ec8e98972" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1587683437362-da7775ffc532?ixlib=rb-4.0.3&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb" style="object-position:center 50%"/><h1 class="page-title">LEAGUE of TENNIS</h1></header><div class="page-body"><h1 id="a5d08ca7-554c-4cad-9ef0-ce411aec8966" class="">프리시즌 진행 방식 안내</h1><p id="6a242b53-f2d6-496a-a861-20d495745149" class="">안녕하세요. NTRP plus입니다</p><p id="a6664ef0-c49c-4ddb-8af1-6b0844f312bb" class="">
+</p><p id="4ea19c38-191b-410c-a69d-8f594feeee2d" class="">테니스를 치다보면 같은 구력, NTRP 여도<strong><mark class="highlight-yellow"> </mark></strong></p><p id="619f7fa9-bdb0-4d44-b11a-b59670167779" class="">실력 <strong><mark class="highlight-yellow">차이가 많이나서 서로 눈치 볼 때</mark></strong> 있으셨죠?</p><p id="db8034f6-cd7f-48fc-9688-0beb8e3ef548" class="">
+</p><p id="f281971c-6020-4f5c-9658-4ee609f6fd23" class="">또는, 레슨을 받는 중이고 이제 랠리를 해보려하는데</p><p id="42f25087-c712-431e-a3ad-a8bea09a9c5c" class=""><mark class="highlight-yellow"><strong>주변에 같이 칠 사람도 없어서</strong></mark> 막막하신 분도 계실거에요.</p><p id="f5dcec30-e6bc-41db-a6c7-a09137fd5e9c" class="">
+</p><p id="03326349-b69e-49f6-ac25-80f0393fe7f2" class="">이제 NTRP plus 리그에 참가하여</p><p id="4acb2075-4e53-4db8-aee1-cb51a6547536" class="">나랑 <mark class="highlight-yellow"><strong>비슷한 실력의 사람</strong></mark>과</p><p id="91c59f8b-25d7-466e-b765-15542168061c" class="">눈치 보지 않고 테니스를 칠 수 있어요!</p><p id="dad277b3-9f19-4a8e-b3d6-e703db5605cd" class="">
+</p><p id="a75f97c0-bcad-4aa6-b6e8-38bcd706c65a" class=""><mark class="highlight-yellow"><strong>테른이</strong></mark>분들 뿐만 아니라 <strong><mark class="highlight-yellow">테생아, 테린이</mark></strong>분들도</p><p id="61f6e9eb-7789-4b2d-9d12-8f3a31485b55" class="">나에게 맞는 상대와 테니스를 치며 리그 진행할 수 있으니 끝까지 집중해주세요!</p><p id="bf27e969-7378-4326-9804-e9362aee648a" class="">
+</p><hr id="bcc2eee0-751f-4338-9c26-45e395c84943"/><p id="0ec30776-8b52-409c-a913-c660feb9dc6c" class="">
+</p><p id="63ceab0d-5e5c-4386-b970-9bfaefed2c7a" class="">이제 본격적으로, NTRP plus 리그 오브 테니스</p><p id="459ee02e-728b-4e49-a6f7-9b7f80ee0bf3" class="">프리시즌이 어떻게 진행되는지 알려드릴게요.</p><figure id="d4a2790d-7be8-47c0-b460-56542748ce18" class="image"><a href="{{url_for('static', filename='leagueOfTennis/1.png')}}"><img style="width:1200px" src="{{url_for('static', filename='leagueOfTennis/1.png')}}"/></a></figure><p id="37f70ea2-bcd8-42d3-afc0-b5d94642fa9e" class="">
+</p><h1 id="d7076212-da4f-474e-b71e-1d6b77ea8101" class="">프리시즌 진행 방식 안내</h1><p id="efa8a3e4-6ba2-4ef9-9214-a667270f808c" class="">프리시즌은 크게 <mark class="highlight-yellow"><strong>3개의 단계</strong></mark>로 이루어져요.</p><p id="3efbd9dd-1a7e-4b1e-9203-9927996baa79" class="">테니스 오픈 채팅방 또는 카페에서</p><p id="cd609dd3-e0c8-4434-80d2-5cb6d6945ec0" class="">경기를 잡을 때와 크게 다르지 않으니 걱정 안하셔도 됩니다:)</p><p id="fa163484-f7a5-42f5-9ded-c55b813cc415" class="">
+</p><hr id="08fb23f5-7016-4baa-a917-89532306f09e"/><h1 id="e1cda483-f9fa-4e6b-9053-1149df3006e5" class="">1단계.</h1><figure id="11d848a2-8c90-4362-8b27-2a6cfc1cdf40" class="image"><a href="{{url_for('static', filename='leagueOfTennis/2.png')}}"><img style="width:1330px" src="{{url_for('static', filename='leagueOfTennis/2.png')}}"/></a></figure><p id="c8fde4ba-96af-424f-9ec9-4fba2ceb45c9" class="">프리시즌의 경우 <mark class="highlight-yellow"><strong>오픈채팅방에서 리그가 진행</strong></mark> 됩니다.</p><p id="1a5f3579-a27c-4196-9f63-212fa6e78873" class="">위 사진처럼 오픈채팅방을 찾아 들어오는 방식과</p><p id="0d583011-d648-4b08-ae48-53fe6b8b4f41" class=""><mark class="highlight-yellow"><strong>맨 밑 하단 링크</strong></mark>를 클릭하여 참가할 수도 있어요.</p><p id="f323a011-9954-416c-bd36-fb663c08f5c1" class="">
+</p><p id="eac43af5-493b-46ad-adc5-f933adc945c3" class="">이때, 본인의 NTRP 가 모르신다거나,</p><p id="09b20e0a-c309-4205-a4ab-d3b17f3abace" class="">NTRP 가 뭔지 모르신다는 분들은</p><p id="e97046f1-f8bc-4a45-926a-a1af424aa584" class="">단톡방 공지 또는 하단 <strong><mark class="highlight-yellow">NTRP 테스트 웹사이트에서</mark></strong></p><p id="ee7d419a-82ce-4870-bc4f-158f6d9d64f1" class=""><strong><mark class="highlight-yellow">본인 실력을 확인</mark></strong>하고 입장해주세요(임시 NTRP 입니다)</p><p id="333d2bf5-b3df-4eaa-9bf1-6e153d1a8207" class="">
+</p><p id="8630d6fb-8d5a-4147-97c4-f41df6d0a950" class="">내 실력에 맞는 리그 단톡방에 들어왔다면</p><p id="bd7c56bb-6c0c-49ce-a162-05771e7bef7a" class="">이제 경기를 해봐야겠죠?</p><p id="f0d6eeb6-baab-4b4f-9825-c96788db74e5" class="">
+</p><hr id="6fe74313-d278-41ed-911d-5d208ca9ba49"/><h1 id="b2d6eac7-46ce-4a89-917b-263b53448076" class="">2단계.</h1><figure id="b291bb8d-8eb0-4836-9c82-c01b905fd10e" class="image"><a href="{{url_for('static', filename='leagueOfTennis/3.png')}}"><img style="width:1320px" src="{{url_for('static', filename='leagueOfTennis/3.png')}}"/></a></figure><p id="9466c356-0e1b-4096-bfee-3fa40754afb2" class="">위 사진과 같이, 경기할 사람을 찾을 수 있어요</p><p id="a9e42494-79bb-4ec1-acc9-9b3b8b6deda0" class="">
+</p><p id="e57bca61-f175-49fa-956d-f728f2a9e4f1" class="">원활한 운영을 위해 <mark class="highlight-yellow"><strong>4명이서 경기</strong></mark>를 합니다.</p><p id="ea5f069f-b7cb-49f6-a2a4-c95717c33e68" class="">10~20분 몸을 풀어주신 다음에(재량), <mark class="highlight-yellow"><strong>파트너를 바꿔가며</strong></mark></p><p id="f6a62bd3-a5d0-40d1-b133-13adbc8dbeaf" class=""><mark class="highlight-yellow"><strong>3경기를 진행</strong></mark>하시면 됩니다(위의 사진 참고)</p><p id="11607bb1-1f69-4be6-bde5-a59fbd397766" class="">
+</p><p id="253577b6-c428-447e-9dfb-7118dee261ae" class="">이때 반드시,</p><p id="4d669a7a-af65-41ca-bfa4-a488d3a81e0b" class="">경기를 올린 사람이 경기가 끝날 때 마다 <mark class="highlight-yellow"><strong>결과를 기억</strong></mark>해주세요</p><p id="757b29f6-a550-4c5b-9ef8-8245f015d1b8" class="">(A,B 6: 2 C,D 이런식으로)</p><p id="ab34bf11-61e6-437c-a94c-4f69e8358792" class="">
+</p><p id="ed206f4a-bbd3-44da-bb8a-e396caf29c4e" class="">사실 위의 1,2단계는 평소 오픈 채팅방을 통해</p><p id="dd8c0aa6-2072-4910-adc2-1f334b1c0577" class="">테니스를 치시는 분이라면 차이를 못 느끼셨을 것 같아요</p><p id="a564147a-797d-4d78-99ec-6ee250455ce3" class="">그럼, 무슨 차이가 있을까요?</p><p id="a2664327-36ea-4883-befc-10529909baaf" class="">
+</p><hr id="a2ac31f0-a698-4133-8bfb-a31e4e3fb8b2"/><h1 id="805716e3-b725-4ec2-81a8-ab435e7de3fe" class="">3단계.</h1><figure id="c08cc154-3789-415a-92f7-968b937b0e7e" class="image"><a href="{{url_for('static', filename='leagueOfTennis/4.png')}}"><img style="width:1320px" src="{{url_for('static', filename='leagueOfTennis/4.png')}}"/></a></figure><p id="c8f3eeaa-c178-4fe8-9323-e689c7eb8913" class="">마지막 3단계에서 차이를 확인하실 수 있는데요.</p><p id="5e6f08bc-5b5e-4eb4-adff-652b891f3c9c" class="">
+</p><p id="a27d937b-55af-463c-bdf1-c7e4ff129916" class=""><mark class="highlight-yellow"><strong>경기 결과를 일정 댓글에 올려주시면</strong></mark></p><p id="c93d5900-4ad8-4d15-9ad2-22ddd14c801a" class="">운영자가 경기 결과를 반영해</p><p id="5dae458d-a10c-4d54-a62a-36fb8129b906" class="">NTRP 점수와 다른 기록들을 갱신합니다.</p><p id="239066a7-7192-40e5-941b-78faf64fc907" class="">
+</p><p id="8c71da0d-a8f4-4755-a337-cfd4f86d0ee9" class="">참여자는 <mark class="highlight-yellow"><strong>갱신된 NTRP 를 통해</strong></mark></p><p id="c0dde5f2-e6dc-42ff-8fb2-10c684cf3365" class=""><mark class="highlight-yellow"><strong>다음 상대와 경기를 진행</strong></mark>하면 됩니다</p><p id="87ee4e20-d20b-42ae-b749-3e1da2a8dfa8" class="">
+</p><hr id="8fd029fd-7f10-40d7-84d2-2ff7ac704ca2"/><p id="736ef091-39c0-4296-86de-2027d0306e44" class="">
+</p><p id="c14a7753-c575-4bc6-b86c-fb24862787b2" class="">이런식으로 리그 오브 테니스 프리시즌이 운영됩니다</p><p id="3e915a41-2a72-41b0-82b5-5fe72fc2f595" class="">자세히 설명 드리려다보니 설명이 좀 길어졌네요</p><p id="53738426-555e-434f-b632-dcba0bc299fd" class="">요약하자면,</p><p id="ba26984a-976e-4da8-91b4-d35663e3132d" class="">
+</p><blockquote id="6414baff-08ff-4f54-beba-04c040fe6573" class=""><strong>1단계. 본인 실력에 맞는 리그 단톡방으로 이동
+</strong><p id="68f62b22-3589-41bd-94a8-c95ad84effa6" class=""><strong>2단계. 카톡 일정을 통해 같이 경기할 사람을 찾는다
+</strong></p><p id="f502231b-7423-4e32-9062-227fe354bf83" class=""><strong>3단계. 경기 결과를 댓글에 작성한다</strong></p></blockquote><p id="b023ef69-21ee-4ee1-a519-d3b079f4c511" class="">
+</p><hr id="dbc63e6f-72c9-4e91-8be6-f57de20c9211"/><p id="4b20038d-aaac-48b2-9aa8-23c71d6d54e5" class="">
+</p><h3 id="d5f78339-67de-414d-b6cf-decbdf6a5920" class="">갱신된 본인 NTRP 확인하기</h3><figure id="8b67525a-d744-462e-8b0d-9dd451a646ac" class="image"><a href="{{url_for('static', filename='leagueOfTennis/5.png')}}"><img style="width:1330px" src="{{url_for('static', filename='leagueOfTennis/5.png')}}"/></a></figure><p id="940ddd74-6a80-400a-866e-dc54870da9db" class=""><mark class="highlight-yellow"><strong>본인 리그 단톡방 공지를 확인</strong></mark>하시면 </p><p id="6c7c81d9-f22f-4c15-bba1-ada987003401" class=""><mark class="highlight-red"><strong>갱신된 NTRP 및 기록을 볼 수 있는 링크</strong></mark>가 있습니다.</p><p id="c6360cf4-3fdb-42ea-aa47-e3915a91ceed" class="">클릭해서 확인하실 수 있어요</p><p id="d2e89d09-280e-407b-a89f-db3a0e49eba8" class="">
+</p><hr id="95c81303-b1cf-4e04-8807-325eacf08a7b"/><h1 id="adaab972-96b5-4828-91d8-e33b82d80cbf" class="">FAQ.</h1><h2 id="41c310b2-0d12-441f-b986-a1f503adc978" class="">1. 참가비는 얼마인가요?</h2><p id="68ef926f-c694-4d13-a608-a99014980eea" class=""><strong><mark class="highlight-yellow">참가비는 따로 없으니 </mark></strong>오픈 채팅방 들어오셔서 자유롭게 경기하시면 됩니다</p><p id="1b0fd945-df14-4fba-ba19-1b51037fb9a8" class="">
+</p><h2 id="b23f804f-2044-47a1-968b-0808a5691f8e" class="">2. <em>꼭 시합을 해야하나요? 랠리만 하고 싶어서요</em></h2><p id="8c92d76e-8d8f-4f75-a030-27092844ac31" class="">테생아, 테린이 분들 처럼 이제 입문하시는 분들은 </p><p id="e9c8cc24-153d-478c-993e-6fd44874bacb" class="">바로 시합을 하기 많이 어렵죠ㅜㅜ</p><p id="3adb6b52-3436-442d-8713-fff87b36f426" class="">잘치시는 분중에는 랠리로 연습하고 싶으신 분들도 계실 것 같아요!</p><p id="caba184f-16da-47bd-8d46-8ed3f26d6b06" class=""><mark class="highlight-yellow"><strong>시합 꼭 안하셔도 됩니다</strong></mark>. 즐겁게 테니스 쳐주세요:)</p><p id="105e4011-d522-4504-b72e-69361b005351" class="">
+</p><h2 id="234ada45-2f92-498f-8524-5a099a30e423" class="">3. 랠리를 하면 민폐일 것 같은데 참가 가능한가요?</h2><p id="79743751-3918-4333-8ca6-96d3f14f6fce" class="">물론 가능합니다!</p><p id="56b356b3-45ff-4f98-95de-9a773421c846" class=""><mark class="highlight-yellow"><strong>입문하신 분이면 입문하시는 분들끼리 치시게 되니</strong></mark> </p><p id="8ae684c1-4fad-4b08-804b-b60146c82442" class="">부담없이 참가해주세요</p><p id="bbfe3c9a-6264-4084-a1ce-1e10e6818f42" class="">
+</p><h1 id="ef6e8a2f-b26a-4fb4-865d-076b14049642" class="">4. 시즌 중에 참여 가능한가요?</h1><p id="351d0c0b-3e70-4c41-acd6-5bfb73dd3b56" class="">네 시즌 중에도 참여 가능합니다! </p><p id="9c70750c-1b48-4c90-903d-55ec09aa622b" class="">중간에 참여해도 상관없으니 많은 참여 부탁드려요</p><p id="98a0f14b-c4c0-4f32-a5e5-61c9f39c73dc" class="">
+</p><hr id="f38bc1cb-d66f-4438-875c-49ce89969d5c"/><p id="9615fa6c-0f79-4bd9-9e09-9794850c6546" class="">
+</p><p id="3c89c9a6-dcf3-4fe1-909d-77ffca655941" class="">리그에 대한 전반적인 과정 및 궁금하실 것 같은 부분을 안내해드렸어요</p><p id="9eb167c8-f197-4444-82d2-1573f74f77e7" class="">리그 참가에 관심 있으신 분은 하단 링크로 들어오시면 됩니다🙂</p><h3 id="8c5314bd-8575-4dcf-a025-7215b085a38e" class="">나의 테니스 NTRP를 정확하게 측정하고 싶다면?</h3><figure id="6207ea84-9f05-4a6f-995f-53e8ef7b0788"><a href="http://ntrpplus.com" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">NTRP plus - 내 NTRP 측정</div><div class="bookmark-description">간단하게 내 NTRP를 측정하고, 테린이, 테른이 대회까지 참여하자! 테니스 레슨, 볼머신기에서 나오는 공만 치는 것이 지루하다면 들어오세요!</div></div><div class="bookmark-href">http://ntrpplus.com</div></div><img src="https://ntrpplus.com/icon.png" class="bookmark-image"/></a></figure><p id="6ad767fe-cf30-44ca-a7c1-933432dc2b9f" class="">
+</p><h3 id="18997aa8-4af1-4ad6-98d6-5b0a9bbdde47" class="">테니스 리그방 단톡방 링크</h3><figure id="75701a05-4040-4db3-a186-d504c6a4a595"><a href="https://open.kakao.com/o/gRdhG7Re" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">🏆리그 오브 테니스 2023</div><div class="bookmark-description">테니스 #서울테니스 #테린이 #테니스리그 #테린이리그 #리그오브테니스</div></div><div class="bookmark-href"><img src="https://iopen.kakaocdn.net/favicon.ico" class="icon bookmark-icon"/>https://open.kakao.com/o/gRdhG7Re</div></div><img src="https://iopen.kakaocdn.net/img/og/v1/ko_scrap_sv_02.png" class="bookmark-image"/></a></figure><p id="97a10339-fddf-4c74-bd13-43a28958619d" class="">
+</p><p id="38744ac8-aded-4ac0-8f44-aa7c2fcad255" class="">
+</p><p id="90abfb58-b752-46fc-a939-0fef393fc013" class="">
+</p></div></article></body></html>
