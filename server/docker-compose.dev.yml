@@ -29,7 +29,6 @@ services:
 
   express:
     container_name: express
-    user: root
     build:
       context: express
       dockerfile: Dockerfile.dev
