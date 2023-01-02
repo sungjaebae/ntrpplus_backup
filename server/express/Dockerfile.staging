@@ -9,8 +9,10 @@ RUN mkdir -p /app
 # nc(netcat) 커맨드 설치
 RUN apt update && apt install netcat -y && apt install openssl -y
 
+RUN groupmod -g 1002 node && usermod -u 1001 -g 1002 node
+
 RUN chown --changes --silent --no-dereference --recursive \
-    1000:1000 /app
+    node:node /app
 
 USER node
 
@@ -18,14 +20,14 @@ RUN npm install -g nodemon
 
 WORKDIR /app
 
-COPY package.json .
+COPY --chown=node:node package.json .
 
 RUN npm install
 
-COPY prisma ./prisma/
+COPY --chown=node:node prisma ./prisma/
 
 RUN npx prisma generate
 
-COPY . .
+COPY --chown=node:node . .
 
 CMD ["npm", "run", "start"]

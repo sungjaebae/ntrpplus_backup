@@ -16,7 +16,6 @@ services:
       - "443:443"
     environment:
       - NGINX_HOST=dev.ntrpplus.com
-    restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -29,10 +28,9 @@ services:
 
   express:
     container_name: express
-    user: root
     build:
       context: express
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.staging
     environment:
       - NODE_ENV=development
       - DATABASE_URL=file:/instance/ntrpplus_flask.sqlite
